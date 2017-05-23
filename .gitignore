@@ -1,0 +1,13 @@
+node_modules/.bin/jshint
+node_modules/.bin/shjs
+node_modules/cli/
+node_modules/exit/
+node_modules/jshint/
+node_modules/shelljs/
+public/dist/
+public/uploads/
+public/dist/App.bundle.js.map
+
+public/dist/App.bundle.js.map
+
+*.map
