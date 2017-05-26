@@ -82,12 +82,24 @@ exports.editStore = async (req, res) => {
     res.render('editStore', { title: `Edit ${store.name}`, store });
 };
 
-exports.viewStore = async (req, res) => {
+exports.getStoreBySlug = async (req, res, next) => {
     // 1. find the store given the id
-    const store = await Store.findOne({ _id: req.params.id });
+    const store = await Store.findOne({ slug: req.params.slug });
+    if (!store) return next();
 
     // 2. confirm they are the owner of the store
 
     // 3. render the page to view the store
-    res.render('viewStore', { title: `${store.name}`, store });
+    res.render('store', { title: `${store.name}`, store });
+};
+
+exports.getStoresByTag = async (req, res) => {
+    // 1. get list of all tags with counts
+    const tag = req.params.tag;
+    const tagQuery = tag || { $exists: true };
+    const tagsPromise = Store.getTagsList();
+    const storesPromise = Store.find({ tags: tagQuery });
+    const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
+
+    res.render('tags', { tags, stores, title: 'Tags', tag });
 };
