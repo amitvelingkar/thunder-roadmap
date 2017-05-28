@@ -111,3 +111,23 @@ exports.getStoresByTag = async (req, res) => {
 
     res.render('tags', { tags, stores, title: 'Tags', tag });
 };
+
+exports.searchStores = async (req, res) => {
+    const stores = await Store
+    .find({
+        $text: {
+            $search: req.query.q
+        }
+    },
+    {
+        // this asks mongodb to get a match score
+        score: { $meta: 'textScore' }
+    })
+    // we want to sort by prominenece
+    .sort({
+        score: { $meta: 'textScore' }
+    })
+    // show only first 5
+    .limit(5);
+    res.json(stores);
+};
