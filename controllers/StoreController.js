@@ -93,7 +93,9 @@ exports.editStore = async (req, res) => {
 
 exports.getStoreBySlug = async (req, res, next) => {
     // 1. find the store given the id
-    const store = await Store.findOne({ slug: req.params.slug }).populate('author');
+    const store = await Store
+    .findOne({ slug: req.params.slug })
+    .populate('author reviews');
     if (!store) return next();
 
     // 2. confirm they are the owner of the store

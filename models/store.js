@@ -39,6 +39,17 @@ const storeSchema = new mongoose.Schema({
         ref: 'User',
         required: 'you must always supply an author'
     }
+},
+{
+    toJSON: { virtuals: true },
+    toObject: { vistuals: true }
+});
+
+// find reviews where store._id property === review.store property
+storeSchema.virtual('reviews', {
+    ref: 'Review', // model to link
+    localField: '_id', // which field on the store to match a review
+    foreignField: 'store' // which field on the review to match the store
 });
 
 // setup indexes so that search can work faster
