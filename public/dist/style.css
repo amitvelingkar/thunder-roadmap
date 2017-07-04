@@ -1142,6 +1142,8 @@ pre.error {
   position: relative;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -1164,11 +1166,12 @@ pre.error {
       white-space: pre-wrap;
       font-size: 2rem;
       line-height: 1; }
-    .listitem__body--subtitle {
+    .listitem__body--subtitle, .listitem__body--text {
       white-space: pre-wrap;
       font-size: 1.2rem;
       color: #999;
-      line-height: 1; }
+      line-height: 1;
+      padding-top: 5px; }
   .listitem__actions {
     display: -ms-flexbox;
     display: flex; }
@@ -1178,17 +1181,30 @@ pre.error {
     margin-left: 0.5rem;
     position: relative;
     width: 32px;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    background: #eee; }
+    padding: 6px; }
     .listitem__action svg {
-      fill: #333; }
+      /*
+            fill: #666;
+            */ }
     .listitem__action a {
       width: 32px;
       margin: auto;
       text-align: center;
       font-size: 12px; }
+    .listitem__action--button {
+      background: none;
+      border: 0;
+      outline: 0;
+      position: relative;
+      font-size: 12px; }
+      .listitem__action--button svg {
+        width: 20px; }
+      .listitem__action--button:after {
+        content: '\2665\FE0F';
+        font-size: 20px;
+        position: absolute;
+        opacity: 0;
+        top: 0; }
 
 .add__button {
   background: none;

@@ -6,6 +6,8 @@
     position: relative;
     padding-left: 2rem;
     padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,11 +29,13 @@
             font-size: 2rem;
             line-height: 1;
         }
-        &--subtitle {
+        &--subtitle,
+        &--text{
             white-space:pre-wrap;
             font-size: 1.2rem;
             color: #999;
             line-height: 1;
+            padding-top: 5px;
         }
     }
     &__actions {
@@ -43,17 +47,33 @@
         position: relative;
         width: 32px;
         padding: 6px;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        background: #eee;
         svg {
-            fill: #333;
+            /*
+            fill: #666;
+            */
         }
         a {
             width: 32px;
             margin: auto;
             text-align: center;
             font-size: 12px;
+        }
+        &--button {
+            background: none;
+            border: 0;
+            outline: 0;
+            position: relative;
+            font-size: 12px;
+            svg {
+                width: 20px;
+            }
+            &:after {
+                content: '\2665\FE0F';
+                font-size: 20px;
+                position: absolute;
+                opacity: 0;
+                top: 0; 
+            }
         }
     }
 }

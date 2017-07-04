@@ -41,6 +41,21 @@ router.get('/workflow/add',
 router.post('/workflow/add',
     catchErrors(workflowController.createWorkflow)
 );
+router.post('/workflow/add/:id',
+    catchErrors(workflowController.updateWorkflow)
+);
+router.get('/workflows/:id/edit', catchErrors(workflowController.editWorkflow));
+router.post('/workflow/:id/moveup',
+    catchErrors(workflowController.moveUp),
+    catchErrors(workflowController.reorderAll)
+);
+router.post('/workflow/:id/movedown',
+    catchErrors(workflowController.moveDown),
+    catchErrors(workflowController.reorderAll)
+);
+router.post('/workflow/add/:id',
+    catchErrors(workflowController.updateWorkflow)
+);
 
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
