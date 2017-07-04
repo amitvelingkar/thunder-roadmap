@@ -1,0 +1,5 @@
+mixin workflowForm(workflow = {})
+    form(action=`/workflow/add/${workflow._id || ''}` method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name" value=workflow.name)
+        input(type="submit" value="Save" class="button")

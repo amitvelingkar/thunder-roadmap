@@ -1123,4 +1123,82 @@ pre.error {
   line-height: 3;
   white-space: pre-line; }
 
+.actionbar {
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2rem; }
+  .actionbar__action {
+    margin-right: 10px; }
+    .actionbar__action .button {
+      padding: 10px; }
+  .actionbar button {
+    padding: 10px; }
+
+.listitem {
+  background: white;
+  border-bottom: 0;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center; }
+  .listitem:before {
+    width: 5px;
+    left: 0;
+    content: '';
+    display: block;
+    background: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
+    position: absolute;
+    height: 100%;
+    background-attachment: fixed; }
+  .listitem__body {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem; }
+    .listitem__body--title {
+      white-space: pre-wrap;
+      font-size: 2rem;
+      line-height: 1; }
+    .listitem__body--subtitle {
+      white-space: pre-wrap;
+      font-size: 1.2rem;
+      color: #999;
+      line-height: 1; }
+  .listitem__actions {
+    display: -ms-flexbox;
+    display: flex; }
+  .listitem__action {
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: 0.5rem;
+    position: relative;
+    width: 32px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #eee; }
+    .listitem__action svg {
+      fill: #333; }
+    .listitem__action a {
+      width: 32px;
+      margin: auto;
+      text-align: center;
+      font-size: 12px; }
+
+.add__button {
+  background: none;
+  border: 0;
+  outline: 0;
+  position: relative; }
+  .add__button svg {
+    width: 40px;
+    fill: #aaa; }
+  .add__button--added svg {
+    fill: orange; }
+
 /*# sourceMappingURL=style.css.map*/

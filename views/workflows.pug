@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_workflowForm
+include mixins/_workflowListItem
+
+block content
+    .inner
+        h2 #{title}
+        +workflowForm()
+        p
+        .listitems
+            each workflow in workflows
+                    +workflowListItem(workflow)

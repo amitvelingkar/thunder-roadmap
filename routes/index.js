@@ -4,6 +4,7 @@ const storeController = require('../controllers/StoreController');
 const userController = require('../controllers/UserController');
 const authController = require('../controllers/AuthController');
 const reviewController = require('../controllers/ReviewController');
+const workflowController = require('../controllers/WorkflowController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -31,6 +32,15 @@ router.get('/tags', catchErrors(storeController.getStoresByTag));
 router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
 router.get('/hearts', authController.isLoggedIn,catchErrors(storeController.getHearts));
+
+router.get('/workflows', catchErrors(workflowController.getWorkflows));
+router.get('/workflow/add',
+    authController.isLoggedIn,
+    workflowController.addWorkflow
+);
+router.post('/workflow/add',
+    catchErrors(workflowController.createWorkflow)
+);
 
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
