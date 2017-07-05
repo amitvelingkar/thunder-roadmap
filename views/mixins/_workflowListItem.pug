@@ -1,10 +1,11 @@
 mixin workflowListItem(workflow = {})
     .listitem
         .listitem__body
-            .listitem__body--title
-                div #{workflow.order}. #{workflow.name}
-            .listitem__body--text
-                div #{workflow.description}
+            div
+                .listitem__body--title
+                    div #{workflow.order}. #{workflow.name}
+                .listitem__body--text
+                    div #{workflow.description}
         .listitem__actions
             .listitem__action.listitem__action--orderup
                 form(method="POST" action=`/workflow/${workflow._id}/moveup`)

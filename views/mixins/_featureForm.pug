@@ -1,0 +1,7 @@
+mixin featureForm(feature = {})
+    form(action=`/feature/add/${feature._id || ''}` method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name" value=feature.name)
+        label(for="description") Description
+        input(type="text" name="description" value=feature.description)
+        input(type="submit" value="Save" class="button")

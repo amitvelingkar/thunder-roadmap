@@ -1159,7 +1159,13 @@ pre.error {
     position: absolute;
     height: 100%;
     background-attachment: fixed; }
+  .listitem__rank {
+    margin-right: 10px;
+    width: 70px;
+    height: 20px; }
   .listitem__body {
+    display: -ms-flexbox;
+    display: flex;
     padding-top: 1rem;
     padding-bottom: 0.5rem; }
     .listitem__body--title {

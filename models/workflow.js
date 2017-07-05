@@ -8,10 +8,12 @@ const workflowSchema = new mongoose.Schema({
     },
     name: {
         type: String,
+        trim: true,
         required: 'Your workflow must have a name'
     },
     description: {
-        type: String
+        type: String,
+        trim: true
     },
     order: {
         type: Number,

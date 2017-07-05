@@ -1,0 +1,16 @@
+mixin featureListItem(feature = {})
+    .listitem
+        .listitem__body
+            .listitem__rank
+                form(method="POST" action=`/feature/${feature._id}/rank`)
+                    input(type="number" name="stackrank" value=feature.stackrank)
+                    input(type="submit" style="visibility: hidden;")
+            div
+                .listitem__body--title
+                    div #{feature.name}
+                .listitem__body--text
+                    div #{feature.description}
+        .listitem__actions
+            .listitem__action.listitem__action--edit
+                a(href=`/features/${feature._id}/edit`)
+                    != h.icon('edit')

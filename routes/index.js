@@ -5,6 +5,7 @@ const userController = require('../controllers/UserController');
 const authController = require('../controllers/AuthController');
 const reviewController = require('../controllers/ReviewController');
 const workflowController = require('../controllers/WorkflowController');
+const featureController = require('../controllers/FeatureController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -45,6 +46,9 @@ router.post('/workflow/add/:id',
     catchErrors(workflowController.updateWorkflow)
 );
 router.get('/workflows/:id/edit', catchErrors(workflowController.editWorkflow));
+router.post('/workflow/add/:id',
+    catchErrors(workflowController.updateWorkflow)
+);
 router.post('/workflow/:id/moveup',
     catchErrors(workflowController.moveUp),
     catchErrors(workflowController.reorderAll)
@@ -53,8 +57,23 @@ router.post('/workflow/:id/movedown',
     catchErrors(workflowController.moveDown),
     catchErrors(workflowController.reorderAll)
 );
-router.post('/workflow/add/:id',
-    catchErrors(workflowController.updateWorkflow)
+router.get('/features', catchErrors(featureController.getFeatures));
+router.get('/feature/add',
+    authController.isLoggedIn,
+    featureController.addFeature
+);
+router.post('/feature/add',
+    catchErrors(featureController.createFeature)
+);
+router.post('/feature/add/:id',
+    catchErrors(featureController.updateFeature)
+);
+router.get('/features/:id/edit', catchErrors(featureController.editFeature));
+router.post('/feature/add/:id',
+    catchErrors(featureController.updateFeature)
+);
+router.post('/feature/:id/rank',
+    catchErrors(featureController.updateRank)
 );
 
 router.get('/login', userController.loginForm);

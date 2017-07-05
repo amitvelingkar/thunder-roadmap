@@ -21,7 +21,13 @@
         height: 100%;
         background-attachment: fixed;
     }
+    &__rank {
+        margin-right: 10px;
+        width: 70px;
+        height: 20px;
+    }
     &__body {
+        display: flex;
         padding-top: 1rem;
         padding-bottom: 0.5rem;
         &--title{
