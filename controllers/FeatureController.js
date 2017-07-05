@@ -82,7 +82,11 @@ exports.rateFeature = async (req, res) => {
 
     // update for this combination of feature, workflow, milestone
     const rating = await Rating.findOneAndUpdate(
-        { _id: req.params.id, workflow: req.body.workflow, milestone: req.body.milestone },
+        {
+            feature: req.body.feature,
+            workflow: req.body.workflow,
+            milestone: req.body.milestone
+        },
         req.body,
         {
             new: true,
@@ -90,6 +94,5 @@ exports.rateFeature = async (req, res) => {
             runValidators: true
         }
     ).exec();
-    
     res.json(rating);
 };
