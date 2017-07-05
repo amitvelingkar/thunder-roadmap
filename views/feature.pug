@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .single
+        h2.title.title--single
+            a(href=`/feature/${feature.slug}`) #{feature.name}
+
+    .single__details.inner
+        p.single__description= feature.description
+        p= "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum"
+        

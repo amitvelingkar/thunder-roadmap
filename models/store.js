@@ -42,7 +42,7 @@ const storeSchema = new mongoose.Schema({
 },
 {
     toJSON: { virtuals: true },
-    toObject: { vistuals: true }
+    toObject: { virtuals: true }
 });
 
 // find reviews where store._id property === review.store property

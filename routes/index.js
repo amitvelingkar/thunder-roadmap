@@ -59,6 +59,7 @@ router.post('/workflow/:id/movedown',
     catchErrors(workflowController.reorderAll)
 );
 router.get('/features', catchErrors(featureController.getFeatures));
+router.get('/feature/:slug', catchErrors(featureController.getFeatureBySlug));
 router.get('/feature/add',
     authController.isLoggedIn,
     featureController.addFeature

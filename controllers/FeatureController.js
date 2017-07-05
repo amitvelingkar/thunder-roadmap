@@ -24,7 +24,7 @@ exports.getFeatures = async (req, res) => {
 };
 
 exports.updateFeature= async (req, res) => {
-    // 1. find and update the store given the id
+    // 1. find and update the feature given the id
     const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, req.body, {
         new: true,
         runValidators: true
@@ -50,4 +50,17 @@ exports.updateRank = async (req, res) => {
     }).exec();
 
     res.redirect(`/features`);
+};
+
+exports.getFeatureBySlug = async (req, res, next) => {
+    // 1. find the feature given the id
+    const feature = await Feature
+    .findOne({ slug: req.params.slug })
+    .populate('ratings');
+    if (!feature) return next();
+
+    // 2. confirm they are the owner of the feature
+
+    // 3. render the page to view the feature
+    res.render('feature', { title: `${feature.name}`, feature });
 };
