@@ -1,21 +1,21 @@
-mixin workflowListItem(workflow = {})
+mixin milestoneListItem(milestone = {})
     .listitem
         .listitem__body
-            .listitem__order ##{workflow.order}
+            .listitem__order ##{milestone.order}
             div
                 .listitem__body--title
-                    div #{workflow.name}
+                    div #{milestone.name}
                 .listitem__body--text
-                    div #{workflow.description}
+                    div #{milestone.description}
         .listitem__actions
             .listitem__action.listitem__action--orderup
-                form(method="POST" action=`/workflow/${workflow._id}/moveup`)
+                form(method="POST" action=`/milestone/${milestone._id}/moveup`)
                     button.listitem__action--button(type="submit" name="up")
                         != h.icon('arrow_up')
             .listitem__action.listitem__action--orderdown
-                form(method="POST" action=`/workflow/${workflow._id}/movedown`)
+                form(method="POST" action=`/milestone/${milestone._id}/movedown`)
                     button.listitem__action--button(type="submit" name="down")
                         != h.icon('arrow_down')
             .listitem__action.listitem__action--edit
-                a(href=`/workflows/${workflow._id}/edit`)
+                a(href=`/milestones/${milestone._id}/edit`)
                     != h.icon('edit')

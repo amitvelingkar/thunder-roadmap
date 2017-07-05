@@ -1178,6 +1178,12 @@ pre.error {
       color: #999;
       line-height: 1;
       padding-top: 5px; }
+  .listitem__order {
+    font-size: 2rem;
+    line-height: 1;
+    margin-right: 10px;
+    color: #999;
+    font-style: italic; }
   .listitem__actions {
     display: -ms-flexbox;
     display: flex; }

@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_milestoneForm
+
+block content
+    .inner
+        h2 #{title}
+        +milestoneForm(milestone)
+

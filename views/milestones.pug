@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_milestoneForm
+include mixins/_milestoneListItem
+
+block content
+    .inner
+        h2 #{title}
+        .listitems
+            each milestone in milestones
+                    +milestoneListItem(milestone)
+        h3= 'Add New Milestone'
+        +milestoneForm()

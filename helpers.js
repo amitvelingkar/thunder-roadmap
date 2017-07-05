@@ -27,5 +27,6 @@ exports.menu = [
   { slug: '/add', title: 'Add', icon: 'add', },
   { slug: '/features', title: 'Features', icon: 'add', },
   { slug: '/workflows', title: 'Workflows', icon: 'add', },
+  { slug: '/milestones', title: 'Milestones', icon: 'add', },
   { slug: '/map', title: 'Map', icon: 'map', },
 ];

@@ -5,6 +5,7 @@ const userController = require('../controllers/UserController');
 const authController = require('../controllers/AuthController');
 const reviewController = require('../controllers/ReviewController');
 const workflowController = require('../controllers/WorkflowController');
+const milestoneController = require('../controllers/MilestoneController');
 const featureController = require('../controllers/FeatureController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
@@ -74,6 +75,31 @@ router.post('/feature/add/:id',
 );
 router.post('/feature/:id/rank',
     catchErrors(featureController.updateRank)
+);
+
+
+router.get('/milestones', catchErrors(milestoneController.getMilestones));
+router.get('/milestone/add',
+    authController.isLoggedIn,
+    milestoneController.addMilestone
+);
+router.post('/milestone/add',
+    catchErrors(milestoneController.createMilestone)
+);
+router.post('/milestone/add/:id',
+    catchErrors(milestoneController.updateMilestone)
+);
+router.get('/milestones/:id/edit', catchErrors(milestoneController.editMilestone));
+router.post('/milestone/add/:id',
+    catchErrors(milestoneController.updateMilestone)
+);
+router.post('/milestone/:id/moveup',
+    catchErrors(milestoneController.moveUp),
+    catchErrors(milestoneController.reorderAll)
+);
+router.post('/milestone/:id/movedown',
+    catchErrors(milestoneController.moveDown),
+    catchErrors(milestoneController.reorderAll)
 );
 
 router.get('/login', userController.loginForm);
