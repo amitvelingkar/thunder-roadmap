@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Feature = mongoose.model('Feature');
+const Workflow= mongoose.model('Workflow');
+const Milestone = mongoose.model('Milestone');
+const Rating = mongoose.model('Rating');
 //const promisify = require('es6-promisify');
 
 exports.addFeature = (req, res) => {
@@ -54,13 +57,39 @@ exports.updateRank = async (req, res) => {
 
 exports.getFeatureBySlug = async (req, res, next) => {
     // 1. find the feature given the id
-    const feature = await Feature
+    const featurePromise = Feature
     .findOne({ slug: req.params.slug })
     .populate('ratings');
+
+    const workflowsPromise = Workflow.find();
+    const milestonesPromise = Milestone.find();
+
+    const [feature,workflows,milestones] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise]);
+
     if (!feature) return next();
 
     // 2. confirm they are the owner of the feature
+    // TODO
 
     // 3. render the page to view the feature
-    res.render('feature', { title: `${feature.name}`, feature });
+    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones });
+};
+
+// rate the feature
+exports.rateFeature = async (req, res) => {
+    req.body.author = req.user._id;
+    req.body.feature = req.params.id;
+
+    // update for this combination of feature, workflow, milestone
+    const rating = await Rating.findOneAndUpdate(
+        { _id: req.params.id, workflow: req.body.workflow, milestone: req.body.milestone },
+        req.body,
+        {
+            new: true,
+            upsert: true,
+            runValidators: true
+        }
+    ).exec();
+    
+    res.json(rating);
 };

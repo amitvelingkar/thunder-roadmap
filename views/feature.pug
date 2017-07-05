@@ -1,5 +1,7 @@
 extends layout
 
+include mixins/_ratingForm
+
 block content
     .single
         h2.title.title--single
@@ -7,5 +9,8 @@ block content
 
     .single__details.inner
         p.single__description= feature.description
-        p= "lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum"
-        
+        each workflow in workflows
+            h5= workflow.name
+            .rating__row
+                each milestone in milestones
+                    +ratingForm(feature ,workflow , milestone)
