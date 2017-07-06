@@ -20,7 +20,7 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Roadmap`;
 
 exports.menu = [
-  { slug: '/features', title: 'Features', icon: 'add', },
-  { slug: '/workflows', title: 'Workflows', icon: 'add', },
-  { slug: '/milestones', title: 'Milestones', icon: 'add', }
+  { slug: '/features', title: 'Features', icon: 'cake', },
+  { slug: '/workflows', title: 'Workflows', icon: 'workflow', },
+  { slug: '/milestones', title: 'Milestones', icon: 'milestone', }
 ];
