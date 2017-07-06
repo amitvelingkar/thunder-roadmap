@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Feature = mongoose.model('Feature');
 const Workflow= mongoose.model('Workflow');
 const Milestone = mongoose.model('Milestone');
-const Review = mongoose.model('Review');
-//const promisify = require('es6-promisify');
 
 exports.addFeature = (req, res) => {
     res.render('editFeature', { title: 'Add Feature' });
@@ -73,25 +71,4 @@ exports.getFeatureBySlug = async (req, res, next) => {
 
     // 3. render the page to view the feature
     res.render('feature', { title: `${feature.name}`, feature, workflows, milestones });
-};
-
-// rate the feature
-exports.rateFeature = async (req, res) => {
-    req.body.author = req.user._id;
-    req.body.feature = req.params.id;
-
-    // update for this combination of feature, workflow, milestone
-    const review = await Review.findOneAndUpdate(
-        {
-            feature: req.body.feature,
-            workflow: req.body.workflow
-        },
-        req.body,
-        {
-            new: true,
-            upsert: true,
-            runValidators: true
-        }
-    ).exec();
-    res.json(review);
 };

@@ -1,8 +1,8 @@
-mixin reviewForm(feature,workflow,review)
+mixin ratingForm(feature,workflow,review)
     .review__meta
         .review__stars
             each num in [1,2,3]
-                form.star(method="POST" action=`/api/v1/feature/${feature._id}/rate`)
+                form.star(method="POST" action=`/api/v1/feature/${feature._id}/review/rating`)
                     - const starClass = (review &&  review.rating >= num) ? 'star__button--starred' : '';
                     input(type="hidden" name="workflow" value=workflow._id)
                     button.star__button(type="submit" name="star" value=num class=starClass)

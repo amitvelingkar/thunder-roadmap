@@ -1,6 +1,6 @@
 extends layout
 
-include mixins/_reviewForm
+include mixins/_ratingForm
 include mixins/_milestoneSelector
 
 block content
@@ -15,5 +15,5 @@ block content
                 .review__row
                     .review__workflow #{workflow.name}
                     - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
-                    +reviewForm(feature, workflow, review)
+                    +ratingForm(feature, workflow, review)
                     +milestoneSelector(feature, workflow, milestones, review)

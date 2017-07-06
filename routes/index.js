@@ -5,6 +5,7 @@ const authController = require('../controllers/AuthController');
 const workflowController = require('../controllers/WorkflowController');
 const milestoneController = require('../controllers/MilestoneController');
 const featureController = require('../controllers/FeatureController');
+const reviewController = require('../controllers/ReviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -33,7 +34,10 @@ router.post('/workflow/:id/movedown',
     catchErrors(workflowController.reorderAll)
 );
 router.get('/features', catchErrors(featureController.getFeatures));
-router.get('/feature/:slug', catchErrors(featureController.getFeatureBySlug));
+router.get('/feature/:slug', 
+    authController.isLoggedIn,
+    catchErrors(featureController.getFeatureBySlug)
+);
 router.get('/feature/add',
     authController.isLoggedIn,
     featureController.addFeature
@@ -44,7 +48,10 @@ router.post('/feature/add',
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
-router.get('/features/:id/edit', catchErrors(featureController.editFeature));
+router.get('/features/:id/edit',
+    authController.isLoggedIn,
+    catchErrors(featureController.editFeature)
+);
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
@@ -64,7 +71,10 @@ router.post('/milestone/add',
 router.post('/milestone/add/:id',
     catchErrors(milestoneController.updateMilestone)
 );
-router.get('/milestones/:id/edit', catchErrors(milestoneController.editMilestone));
+router.get('/milestones/:id/edit',
+    authController.isLoggedIn,
+    catchErrors(milestoneController.editMilestone)
+);
 router.post('/milestone/add/:id',
     catchErrors(milestoneController.updateMilestone)
 );
@@ -109,7 +119,8 @@ router.post('/account/reset/:token',
 /*
     API
 */
-
-router.post('/api/v1/feature/:id/rate', catchErrors(featureController.rateFeature));
+router.post('/api/v1/feature/:id/review/rating', catchErrors(reviewController.rating));
+router.post('/api/v1/feature/:id/review/comment', catchErrors(reviewController.comment));
+router.post('/api/v1/feature/:id/review/milestone', catchErrors(reviewController.milestone));
 
 module.exports = router;

@@ -973,7 +973,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function ajaxMilestone(e) {
     e.preventDefault();
-    _axios2.default.post('/api/v1/feature/' + this.dataset.feature + '/rate', {
+    _axios2.default.post('/api/v1/feature/' + this.dataset.feature + '/review/milestone', {
         workflow: this.dataset.workflow,
         milestone: this.value
     }).then(function (res) {

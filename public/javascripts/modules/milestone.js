@@ -4,7 +4,7 @@ import { $ } from './bling';
 function ajaxMilestone(e) {
     e.preventDefault();
     axios
-    .post(`/api/v1/feature/${this.dataset.feature}/rate`, {
+    .post(`/api/v1/feature/${this.dataset.feature}/review/milestone`, {
         workflow: this.dataset.workflow,
         milestone: this.value
     })
