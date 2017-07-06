@@ -84,8 +84,7 @@ exports.rateFeature = async (req, res) => {
     const rating = await Rating.findOneAndUpdate(
         {
             feature: req.body.feature,
-            workflow: req.body.workflow,
-            milestone: req.body.milestone
+            workflow: req.body.workflow
         },
         req.body,
         {

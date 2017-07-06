@@ -9,9 +9,9 @@ block content
 
     .single__details.inner
         p.single__description= feature.description
-        each workflow in workflows
-            h5= workflow.name
-            .rating__row
-                each milestone in milestones
-                    - const rating = feature.ratings.find(function(r) {return (r.milestone.toString() === milestone._id.toString() && r.workflow.toString() === workflow._id.toString()); });
-                    +ratingForm(feature ,workflow , milestone, rating)
+        .single__content
+            each workflow in workflows
+                .rating__row
+                    .rating__workflow #{workflow.name}
+                    - const rating = feature.ratings ? feature.ratings.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
+                    +ratingForm(feature ,workflow, rating)

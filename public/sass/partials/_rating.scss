@@ -47,13 +47,18 @@
     display: flex;
     justify-content: center;
     algin-items: center;
-    border-top: 1px solid $grey;
     & > * {
       flex: 1;
     }
   }
+  &__workflow {
+    width: 70px;
+  }
   &__row {
     display: flex;
-    justify-content: space-between;
+    border-top: 1px solid $grey;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }

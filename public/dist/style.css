@@ -929,6 +929,9 @@ label {
     .single__description {
       margin-right: 0; } }
 
+.single__content {
+  margin-top: 2rem; }
+
 .heart__button {
   background: none;
   border: 0;
@@ -981,6 +984,8 @@ label {
     width: 25px;
     fill: #999; }
   .star__button--starred svg {
+    fill: orange; }
+  .star__button--float svg {
     fill: orange; }
   .star__button--float:after {
     animation: fly 2.5s 1 ease-out; }
@@ -1056,16 +1061,20 @@ label {
     display: flex;
     -ms-flex-pack: center;
         justify-content: center;
-    algin-items: center;
-    border-top: 1px solid #e6e6e6; }
+    algin-items: center; }
     .rating__meta > * {
       -ms-flex: 1;
           flex: 1; }
+  .rating__workflow {
+    width: 70px; }
   .rating__row {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
-        justify-content: space-between; }
+    border-top: 1px solid #e6e6e6;
+    -ms-flex-align: center;
+        align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
 
 .review {
   background: white;

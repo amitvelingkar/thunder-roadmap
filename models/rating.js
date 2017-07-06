@@ -23,8 +23,7 @@ const ratingSchema = new mongoose.Schema({
     },
     milestone: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Milestone',
-        required: 'You must supply a milestone'
+        ref: 'Milestone'
     },
     text: {
         type: String
