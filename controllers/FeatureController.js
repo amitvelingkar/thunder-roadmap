@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Feature = mongoose.model('Feature');
 const Workflow= mongoose.model('Workflow');
 const Milestone = mongoose.model('Milestone');
-const Rating = mongoose.model('Rating');
+const Review = mongoose.model('Review');
 //const promisify = require('es6-promisify');
 
 exports.addFeature = (req, res) => {
@@ -59,7 +59,7 @@ exports.getFeatureBySlug = async (req, res, next) => {
     // 1. find the feature given the id
     const featurePromise = Feature
     .findOne({ slug: req.params.slug })
-    .populate('ratings');
+    .populate('reviews');
 
     const workflowsPromise = Workflow.find().sort({ order: 1 });
     const milestonesPromise = Milestone.find().sort({ order: 1 });
@@ -81,7 +81,7 @@ exports.rateFeature = async (req, res) => {
     req.body.feature = req.params.id;
 
     // update for this combination of feature, workflow, milestone
-    const rating = await Rating.findOneAndUpdate(
+    const review = await Review.findOneAndUpdate(
         {
             feature: req.body.feature,
             workflow: req.body.workflow
@@ -93,5 +93,5 @@ exports.rateFeature = async (req, res) => {
             runValidators: true
         }
     ).exec();
-    res.json(rating);
+    res.json(review);
 };

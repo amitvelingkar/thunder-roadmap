@@ -8,5 +8,5 @@ import ajaxMilestone from './modules/milestone';
 const starForms = $$('form.star');
 starForms.on('submit', ajaxStar);
 
-const milestoneSelector = $$('.rating__milestone');
+const milestoneSelector = $$('.review__milestone');
 milestoneSelector.on('change', ajaxMilestone);

@@ -1,5 +1,5 @@
-mixin milestoneSelector(feature, workflow, milestones, rating)
-    select.rating__milestone(data-feature=feature._id data-workflow=workflow._id)
+mixin milestoneSelector(feature, workflow, milestones, review)
+    select.review__milestone(data-feature=feature._id data-workflow=workflow._id)
         each milestone in milestones
-            - const isSelected = rating && rating.milestone && milestone._id.equals(rating.milestone._id);
+            - const isSelected = review && review.milestone && milestone._id.equals(review.milestone._id);
             option(label=milestone.name value=milestone._id selected=isSelected)

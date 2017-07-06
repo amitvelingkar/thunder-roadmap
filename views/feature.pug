@@ -1,6 +1,6 @@
 extends layout
 
-include mixins/_ratingForm
+include mixins/_reviewForm
 include mixins/_milestoneSelector
 
 block content
@@ -12,8 +12,8 @@ block content
         p.single__description= feature.description
         .single__content
             each workflow in workflows
-                .rating__row
-                    .rating__workflow #{workflow.name}
-                    - const rating = feature.ratings ? feature.ratings.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
-                    +ratingForm(feature, workflow, rating)
-                    +milestoneSelector(feature, workflow, milestones, rating)
+                .review__row
+                    .review__workflow #{workflow.name}
+                    - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
+                    +reviewForm(feature, workflow, review)
+                    +milestoneSelector(feature, workflow, milestones, review)

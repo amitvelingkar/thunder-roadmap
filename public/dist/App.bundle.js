@@ -978,7 +978,7 @@ function ajaxMilestone(e) {
         milestone: this.value
     }).then(function (res) {
         // TODO
-        var score = res.data.score;
+        var rating = res.data.rating;
     }).catch(console.error);
 }
 
@@ -1009,12 +1009,12 @@ function ajaxStar(e) {
     e.preventDefault();
     _axios2.default.post(this.action, {
         workflow: this.workflow.value,
-        score: this.star.value
+        rating: this.star.value
     }).then(function (res) {
-        var score = res.data.score;
+        var rating = res.data.rating;
         var stars = _this.parentElement.getElementsByClassName('star__button');
         for (var i = 0; i < stars.length; i++) {
-            if (i < score) {
+            if (i < rating) {
                 stars[i].classList.add('star__button--starred');
             } else {
                 stars[i].classList.remove('star__button--starred');
@@ -1843,7 +1843,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var starForms = (0, _bling.$$)('form.star');
 starForms.on('submit', _star2.default);
 
-var milestoneSelector = (0, _bling.$$)('.rating__milestone');
+var milestoneSelector = (0, _bling.$$)('.review__milestone');
 milestoneSelector.on('change', _milestone2.default);
 
 /***/ })

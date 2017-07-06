@@ -24,7 +24,7 @@ require('./models/user');
 require('./models/workflow');
 require('./models/feature');
 require('./models/milestone');
-require('./models/rating');
+require('./models/review');
 
 // Start our app!
 const app = require('./app');

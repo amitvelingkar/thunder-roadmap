@@ -10,7 +10,7 @@ function ajaxMilestone(e) {
     })
     .then(res => {
         // TODO
-        const score = res.data.score;
+        const rating = res.data.rating;
     })
     .catch(console.error);
 }

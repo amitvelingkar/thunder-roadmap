@@ -33,10 +33,10 @@ const featureSchema = new mongoose.Schema({
     toObject: { virtuals: true }
 });
 
-featureSchema.virtual('ratings', {
-    ref: 'Rating', // model to link
-    localField: '_id', // which field on the store to match a rating
-    foreignField: 'feature' // which field on the rating to match the feature
+featureSchema.virtual('reviews', {
+    ref: 'Review', // model to link
+    localField: '_id', // which field on the store to match a review
+    foreignField: 'feature' // which field on the review to match the feature
 });
 
 featureSchema.pre('save', async function(next) {

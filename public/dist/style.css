@@ -820,63 +820,63 @@ label {
 /*
   Rating Form
  */
-.rating {
+.review {
   position: relative;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem; }
-  .rating__stars {
+  .review__stars {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
         justify-content: center; }
-    .rating__stars input {
+    .review__stars input {
       display: none; }
-      .rating__stars input:checked ~ label {
+      .review__stars input:checked ~ label {
         color: #FFC40E; }
-      .rating__stars input + label {
+      .review__stars input + label {
         font-size: 0;
         /* These are in the opposite DOM order
            re-order them to be visually in normal order
            This is fine for accessibility because our labels have for()
          */ }
-        .rating__stars input + label:before {
+        .review__stars input + label:before {
           content: '\2605';
           font-size: 2rem; }
-        .rating__stars input + label[for="star5"] {
+        .review__stars input + label[for="star5"] {
           -ms-flex-order: 5;
               order: 5; }
-        .rating__stars input + label[for="star4"] {
+        .review__stars input + label[for="star4"] {
           -ms-flex-order: 4;
               order: 4; }
-        .rating__stars input + label[for="star3"] {
+        .review__stars input + label[for="star3"] {
           -ms-flex-order: 3;
               order: 3; }
-        .rating__stars input + label[for="star2"] {
+        .review__stars input + label[for="star2"] {
           -ms-flex-order: 2;
               order: 2; }
-        .rating__stars input + label[for="star1"] {
+        .review__stars input + label[for="star1"] {
           -ms-flex-order: 1;
               order: 1; }
-        .rating__stars input + label:hover, .rating__stars input + label:hover ~ label {
+        .review__stars input + label:hover, .review__stars input + label:hover ~ label {
           color: #ffdd74; }
-  .rating textarea {
+  .review textarea {
     border: 0;
     outline: 0;
     font-size: 2rem;
     padding: 2rem;
     height: 200px; }
-  .rating__meta {
+  .review__meta {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
         justify-content: center;
     algin-items: center; }
-    .rating__meta > * {
+    .review__meta > * {
       -ms-flex: 1;
           flex: 1; }
-  .rating__workflow {
+  .review__workflow {
     width: 70px; }
-  .rating__row {
+  .review__row {
     display: -ms-flexbox;
     display: flex;
     border-top: 1px solid #e6e6e6;
