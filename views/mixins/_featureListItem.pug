@@ -7,7 +7,7 @@ mixin featureListItem(feature = {})
                     input(type="submit" style="visibility: hidden;")
             div
                 .listitem__body--title
-                    a(href=`/feature/${feature.slug}`) #{feature.name}
+                    a(href=`/feature/${feature.slug}` data-tooltip=feature.description) #{feature.name}
                 .listitem__body--text
                     div #{feature.description}
         .listitem__actions
