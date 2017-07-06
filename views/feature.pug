@@ -2,6 +2,7 @@ extends layout
 
 include mixins/_ratingForm
 include mixins/_milestoneSelector
+include mixins/_commentForm
 
 block content
     .single
@@ -17,3 +18,4 @@ block content
                     - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
                     +ratingForm(feature, workflow, review)
                     +milestoneSelector(feature, workflow, milestones, review)
+                    +commentForm(feature, workflow, review)

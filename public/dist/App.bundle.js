@@ -1834,6 +1834,10 @@ var _star = __webpack_require__(11);
 
 var _star2 = _interopRequireDefault(_star);
 
+var _comment = __webpack_require__(37);
+
+var _comment2 = _interopRequireDefault(_comment);
+
 var _milestone = __webpack_require__(10);
 
 var _milestone2 = _interopRequireDefault(_milestone);
@@ -1843,8 +1847,54 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var starForms = (0, _bling.$$)('form.star');
 starForms.on('submit', _star2.default);
 
+var commentBoxes = (0, _bling.$$)('.review__comment');
+commentBoxes.on('keydown', _comment2.default);
+
 var milestoneSelector = (0, _bling.$$)('.review__milestone');
 milestoneSelector.on('change', _milestone2.default);
+
+/***/ }),
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _axios = __webpack_require__(3);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _bling = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ajaxComment(e) {
+    // if user did not press enter return
+    if (e.keyCode !== 13) {
+        return;
+    }
+    e.preventDefault();
+    this.blur();
+    _axios2.default.post('/api/v1/feature/' + this.dataset.feature + '/review/comment', {
+        workflow: this.dataset.workflow,
+        comment: this.value
+    }).then(function (res) {
+        // TODO: give user feedback
+        var comment = res.data.comment;
+    }).catch(console.error);
+}
+
+exports.default = ajaxComment;
 
 /***/ })
 /******/ ]);
