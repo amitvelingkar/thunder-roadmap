@@ -43,13 +43,16 @@
       // background: none;
     }
     &--logo {
+      height: 94px;
+      width: 250px;
+      padding: 18px;
       &:hover {
         svg {
           transform: none;
         }
       }
       svg {
-        width: 200px;
+        width: 220px;
         margin: 0;
       }
     }

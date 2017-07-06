@@ -1,40 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const storeController = require('../controllers/StoreController');
 const userController = require('../controllers/UserController');
 const authController = require('../controllers/AuthController');
-const reviewController = require('../controllers/ReviewController');
 const workflowController = require('../controllers/WorkflowController');
 const milestoneController = require('../controllers/MilestoneController');
 const featureController = require('../controllers/FeatureController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
-router.get('/', catchErrors(storeController.getStores));
-router.get('/stores', catchErrors(storeController.getStores));
-router.get('/stores/page/:page', catchErrors(storeController.getStores));
-router.get('/add',
-    authController.isLoggedIn,
-    storeController.addStore
-);
-router.post('/add',
-    storeController.upload,
-    catchErrors(storeController.resize),
-    catchErrors(storeController.createStore)
-);
-router.post('/add/:id',
-    storeController.upload,
-    catchErrors(storeController.resize),
-    catchErrors(storeController.updateStore)
-);
-router.get('/stores/:id/edit', catchErrors(storeController.editStore));
-router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
-
-router.get('/tags', catchErrors(storeController.getStoresByTag));
-router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
-
-router.get('/hearts', authController.isLoggedIn,catchErrors(storeController.getHearts));
-
+router.get('/', catchErrors(featureController.getFeatures));
 router.get('/workflows', catchErrors(workflowController.getWorkflows));
 router.get('/workflow/add',
     authController.isLoggedIn,
@@ -132,22 +106,10 @@ router.post('/account/reset/:token',
     catchErrors(authController.update)
 );
 
-router.get('/map',storeController.showMap);
-
-router.post('/reviews/:id',
-    authController.isLoggedIn,
-    catchErrors(reviewController.addReview)
-);
-
-router.get('/top', catchErrors(storeController.getTopStores));
-
 /*
     API
 */
 
-router.get('/api/v1/search', catchErrors(storeController.searchStores));
-router.get('/api/v1/stores/near', catchErrors(storeController.mapStores));
-router.post('/api/v1/store/:id/heart', catchErrors(storeController.heartStore));
 router.post('/api/v1/feature/:id/rate', catchErrors(featureController.rateFeature));
 
 module.exports = router;

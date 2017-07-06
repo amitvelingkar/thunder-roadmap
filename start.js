@@ -20,9 +20,7 @@ mongoose.connection.on('error', (err) => {
 // READY?! Let's go!
 
 // import all of our models
-require('./models/store');
 require('./models/user');
-require('./models/review');
 require('./models/workflow');
 require('./models/feature');
 require('./models/milestone');
