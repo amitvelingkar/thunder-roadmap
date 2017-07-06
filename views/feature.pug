@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_ratingForm
+include mixins/_milestoneSelector
 
 block content
     .single
@@ -14,4 +15,5 @@ block content
                 .rating__row
                     .rating__workflow #{workflow.name}
                     - const rating = feature.ratings ? feature.ratings.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
-                    +ratingForm(feature ,workflow, rating)
+                    +ratingForm(feature, workflow, rating)
+                    +milestoneSelector(feature, workflow, milestones, rating)

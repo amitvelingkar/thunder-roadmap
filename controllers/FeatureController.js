@@ -61,8 +61,8 @@ exports.getFeatureBySlug = async (req, res, next) => {
     .findOne({ slug: req.params.slug })
     .populate('ratings');
 
-    const workflowsPromise = Workflow.find();
-    const milestonesPromise = Milestone.find();
+    const workflowsPromise = Workflow.find().sort({ order: 1 });
+    const milestonesPromise = Milestone.find().sort({ order: 1 });
 
     const [feature,workflows,milestones] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise]);
 

@@ -36,4 +36,13 @@ const ratingSchema = new mongoose.Schema({
     }
 });
 
+// hooks to auto-populate milestone on find and findOne
+function autoPopulate(next) {
+    this.populate('milestone');
+    next();
+}
+
+ratingSchema.pre('find', autoPopulate);
+ratingSchema.pre('findOne', autoPopulate);
+
 module.exports = mongoose.model('Rating', ratingSchema);
