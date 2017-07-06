@@ -2,7 +2,7 @@ mixin featureListItem(feature = {})
     .listitem
         .listitem__body
             .listitem__rank
-                form(method="POST" action=`/feature/${feature._id}/rank`)
+                form.rank(method="POST" action=`/api/v1/feature/${feature._id}/rank`)
                     input(type="number" name="stackrank" value=feature.stackrank)
                     input(type="submit" style="visibility: hidden;")
             div

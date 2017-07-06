@@ -50,7 +50,7 @@ exports.updateRank = async (req, res) => {
         new: true
     }).exec();
 
-    res.redirect(`/features`);
+    res.json(feature);
 };
 
 exports.getFeatureBySlug = async (req, res, next) => {

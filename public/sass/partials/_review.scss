@@ -47,12 +47,21 @@
     display: flex;
     justify-content: center;
     algin-items: center;
+    margin-left: 3rem;
+    width: 120px;
     & > * {
       flex: 1;
     }
   }
   &__workflow {
-    width: 70px;
+    width: 90px;
+  }
+  &__milestone {
+    width: 160px;
+    margin-left: 3rem;
+  }
+  &__comment {
+    margin-left: 3rem;
   }
   &__row {
     display: flex;

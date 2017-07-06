@@ -871,12 +871,19 @@ label {
     display: flex;
     -ms-flex-pack: center;
         justify-content: center;
-    algin-items: center; }
+    algin-items: center;
+    margin-left: 3rem;
+    width: 120px; }
     .review__meta > * {
       -ms-flex: 1;
           flex: 1; }
   .review__workflow {
-    width: 70px; }
+    width: 90px; }
+  .review__milestone {
+    width: 160px;
+    margin-left: 3rem; }
+  .review__comment {
+    margin-left: 3rem; }
   .review__row {
     display: -ms-flexbox;
     display: flex;

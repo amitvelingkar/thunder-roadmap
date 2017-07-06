@@ -6,6 +6,10 @@ include mixins/_featureListItem
 block content
     .inner
         h2 #{title}
+        .actionbar
+            .actionbar__action
+                .button.actionbar__action--refresh
+                    a(href='/features') Refresh Page
         .listitems
             each feature in features
                     +featureListItem(feature)

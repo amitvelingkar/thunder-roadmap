@@ -55,10 +55,11 @@ router.get('/features/:id/edit',
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
+/*
 router.post('/feature/:id/rank',
     catchErrors(featureController.updateRank)
 );
-
+*/
 
 router.get('/milestones', catchErrors(milestoneController.getMilestones));
 router.get('/milestone/add',
@@ -122,5 +123,6 @@ router.post('/account/reset/:token',
 router.post('/api/v1/feature/:id/review/rating', catchErrors(reviewController.rating));
 router.post('/api/v1/feature/:id/review/comment', catchErrors(reviewController.comment));
 router.post('/api/v1/feature/:id/review/milestone', catchErrors(reviewController.milestone));
+router.post('/api/v1/feature/:id/rank', catchErrors(featureController.updateRank));
 
 module.exports = router;
