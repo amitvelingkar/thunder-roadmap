@@ -15,7 +15,7 @@ mixin featureListItem(feature, workflows)
                         - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
                         - const stage = h.getStage(review); 
                         - const tooltip = h.tooltip(workflow, review);
-                        .listitem__body--cell(class=`color${stage}` data-tooltip=tooltip)
+                        a.listitem__body--cell(class=`color${stage}` href=`/feature/${feature.slug}` data-tooltip=tooltip)
                             .listitem__body--stars
                                 if !review || !review.milestone
                                     = 'Not Reviewed'
@@ -26,7 +26,7 @@ mixin featureListItem(feature, workflows)
                                     = 'N/A'
         .listitem__actions
             .listitem__action.listitem__action--review
-                a(href=`/features/${feature.slug}` data-tooltip='review')
+                a(href=`/feature/${feature.slug}` data-tooltip='review')
                     != h.icon('review')
             .listitem__action.listitem__action--edit
                 a(href=`/features/${feature._id}/edit` data-tooltip='edit')
