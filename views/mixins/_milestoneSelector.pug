@@ -1,5 +1,6 @@
 mixin milestoneSelector(feature, workflow, milestones, review)
     select.review__milestone(data-feature=feature._id data-workflow=workflow._id)
+        option(label='Not Selected' value=undefined selected=isSelected)
         each milestone in milestones
             - const isSelected = review && review.milestone && milestone._id.equals(review.milestone._id);
             option(label=milestone.name value=milestone._id selected=isSelected)

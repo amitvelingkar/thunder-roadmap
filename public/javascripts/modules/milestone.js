@@ -6,7 +6,7 @@ function ajaxMilestone(e) {
     axios
     .post(`/api/v1/feature/${this.dataset.feature}/review/milestone`, {
         workflow: this.dataset.workflow,
-        milestone: this.value
+        milestone: this.value || undefined
     })
     .then(res => {
         // TODO
