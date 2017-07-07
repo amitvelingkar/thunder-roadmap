@@ -1,9 +1,10 @@
 mixin ratingForm(feature,workflow,review)
     .review__meta
         .review__stars
-            each num in [1,2,3]
+            each rating in h.ratings
                 form.star(method="POST" action=`/api/v1/feature/${feature._id}/review/rating`)
-                    - const starClass = (review &&  review.rating >= num) ? 'star__button--starred' : '';
-                    input(type="hidden" name="workflow" value=workflow._id)
-                    button.star__button(type="submit" name="star" value=num class=starClass)
-                        != h.icon('heart')
+                    - const starClass = (review &&  review.rating >= rating.value) ? 'star__button--starred' : '';
+                    div(data-tooltip=rating.description)
+                        input(type="hidden" name="workflow" value=workflow._id)
+                        button.star__button(type="submit" name="star" value=rating.value class=starClass)
+                            != h.icon('heart')

@@ -29,10 +29,9 @@ const reviewSchema = new mongoose.Schema({
         type: String
     },
     rating: {
-        // 1= lots of problems, 2= has gaps, 3=works great
         type: Number,
         min: 1,
-        max: 3
+        max: 5
     }
 });
 

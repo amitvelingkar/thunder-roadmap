@@ -33,7 +33,7 @@ exports.tooltip = (workflow, review) => {
   let tooltip = workflow.name;
   if (review) {
     if (review.rating) {
-      tooltip = tooltip + ` ~ Rating: ${review.rating} of 3`;
+      tooltip = tooltip + ` ~ Rating: ${review.rating} of 5`;
     }
     if(review.milestone && review.milestone) {
       tooltip = tooltip + ` ~ Milestone: ${review.milestone.name}`;
@@ -52,4 +52,12 @@ exports.menu = [
   { slug: '/features', title: 'Features', icon: 'cake', },
   { slug: '/workflows', title: 'Workflows', icon: 'workflow', },
   { slug: '/milestones', title: 'Milestones', icon: 'milestone', }
+];
+
+exports.ratings = [
+  { value: 1, description: 'does not exist or completely broken 😭' },
+  { value: 2, description: 'lots of bugs or huge feature gaps 😞' },
+  { value: 3, description: 'incomplete feature - meh 😑' },
+  { value: 4, description: 'almost there, couple of things to fix 🙂' },
+  { value: 5, description: 'done - works perfectly 😀' }
 ];
