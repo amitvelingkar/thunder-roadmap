@@ -19,7 +19,7 @@ mixin featureListItem(feature, workflows)
                             .listitem__body--stars
                                 if !review || !review.milestone
                                     = 'Not Reviewed'
-                                else if review.milestone !== 0
+                                else if review.milestone.order > 1
                                     = `★`.repeat(review.milestone.order-1)
                                     = `☆`.repeat(6-(review.milestone.order-1))
                                 else
