@@ -25,6 +25,9 @@ mixin featureListItem(feature, workflows)
                                 else
                                     = 'N/A'
         .listitem__actions
+            .listitem__action.listitem__action--review
+                a(href=`/features/${feature.slug}` data-tooltip='review')
+                    != h.icon('review')
             .listitem__action.listitem__action--edit
-                a(href=`/features/${feature._id}/edit`)
+                a(href=`/features/${feature._id}/edit` data-tooltip='edit')
                     != h.icon('edit')
