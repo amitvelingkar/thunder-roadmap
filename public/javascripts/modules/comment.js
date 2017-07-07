@@ -3,7 +3,7 @@ import { $ } from './bling';
 
 function ajaxComment(e) {
     // if user did not press enter return
-    if (e.keyCode !== 13) {
+    if (e.type === 'keydown' && e.keyCode !== 13) {
         return;
     }
     e.preventDefault();

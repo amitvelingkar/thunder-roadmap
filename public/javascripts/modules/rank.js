@@ -2,14 +2,18 @@ import axios from 'axios';
 import { $ } from './bling';
 
 function ajaxRank(e) {
+    // if user did not press enter return
+    if (e.type === 'keydown' && e.keyCode !== 13) {
+        return;
+    }
     e.preventDefault();
-    this.stackrank.blur();
+    this.blur();
     axios
-    .post(this.action, {
-        stackrank: this.stackrank.value
+    .post(`/api/v1/feature/${this.dataset.feature}/rank`, {
+        stackrank: this.value
     })
     .then(res => {
-        // TODO
+        // TODO: give user feedback
         const stackrank = res.data.stackrank;
     })
     .catch(console.error);
