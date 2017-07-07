@@ -62,12 +62,18 @@
   }
   &__comment {
     margin-left: 3rem;
+    width: 500px;
   }
   &__row {
     display: flex;
     border-top: 1px solid $grey;
     align-items: center;
     padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
     padding-bottom: 1rem;
   }
 }

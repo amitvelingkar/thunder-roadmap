@@ -5,13 +5,23 @@ include mixins/_milestoneSelector
 include mixins/_commentForm
 
 block content
-    .single
-        h2.title.title--single
-            a(href=`/feature/${feature.slug}`) #{feature.name}
-
+    .inner
+        .subheader
+            .subheader__back
+                a(href=`/features`)
+                    != h.icon('arrow_back')
+            .subheader__text
+                .subheader__text--title= title
+            a.subheader__text--edit(href=`/features/${feature._id}/edit`)
+                    != h.icon('pencil')
+        .subheader__text--subtitle= feature.description
     .single__details.inner
-        p.single__description= feature.description
         .single__content
+            .review__header
+                .review__workflow= 'Workflow'
+                .review__meta= 'Rating'
+                .review__milestone= 'Milestone'
+                .review__comment= 'Comment'
             each workflow in workflows
                 .review__row
                     .review__workflow #{workflow.name}

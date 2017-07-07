@@ -17,12 +17,12 @@
     }
     &--starred {
       svg {
-        fill: orange;
+        fill: #F50057;
       }
     }
     &--float {
       svg {
-        fill: orange;
+        fill: #F50057;
       }
       &:after {
         animation: fly 2.5s 1 ease-out;
