@@ -1,4 +1,4 @@
-mixin featureListItem(feature = {})
+mixin featureListItem(feature, workflows)
     .listitem
         .listitem__body
             .listitem__rank
@@ -10,6 +10,19 @@ mixin featureListItem(feature = {})
                     a(href=`/feature/${feature.slug}` data-tooltip=feature.description) #{feature.name}
                 .listitem__body--text
                     div #{feature.description}
+                .listitem__body--chart
+                    each workflow in workflows
+                        - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
+                        - const stage = h.getStage(review); 
+                        .listitem__body--cell(class=`color${stage}`)
+                            .listitem__body--stars
+                                if !review || !review.milestone
+                                    = 'Not Reviewed'
+                                else if review.milestone !== 0
+                                    = `★`.repeat(review.milestone.order-1)
+                                    = `☆`.repeat(6-(review.milestone.order-1))
+                                else
+                                    = 'N/A'
         .listitem__actions
             .listitem__action.listitem__action--edit
                 a(href=`/features/${feature._id}/edit`)

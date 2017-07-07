@@ -43,6 +43,38 @@
             line-height: 1;
             padding-top: 5px;
         }
+        &--chart {
+            display: flex;
+            margin-top: 6px;
+            .color1 {
+                background: #FF1744;
+            }
+            .color2 {
+                background: #FFC400;
+            }
+            .color3 {
+                background: #76FF03;
+            }
+            .color0 {
+                background: #BDBDBD;
+            }
+        }
+        &--cell {
+            display: flex;
+            width: 75px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-right: 3px;
+            padding: 2px;
+            font-size: x-small;
+            
+        }
+        &--stars {
+            color: #333;
+            text-align: center;
+            width: 100%;
+        }
+
     }
     &__order {
         font-size: 2rem;

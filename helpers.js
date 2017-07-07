@@ -16,6 +16,20 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 // inserting an SVG
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
+// determine what stage of a feature for a review 
+exports.getStage = (review) => {
+  let stage = -1;
+  if (review) {
+    if(review.milestone && review.milestone.order === 1) {
+      stage = 0;
+    } else if (review.rating) {
+      stage = review.rating;
+    }
+  } 
+  return stage;
+};
+
+
 // Some details about the site
 exports.siteName = `Roadmap`;
 

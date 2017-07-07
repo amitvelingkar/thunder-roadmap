@@ -19,9 +19,12 @@ exports.createFeature = async (req, res) => {
 exports.getFeatures = async (req, res) => {
 
     // 1. Query the db for list of all features
-    const features = await Feature.find().sort({ stackrank: 1 });
+    const featuresPromise = Feature.find().sort({ stackrank: 1 }).populate('reviews');
+    const workflowsPromise = Workflow.find().sort({ order: 1 });
+    
+    const [features,workflows] = await Promise.all([featuresPromise,workflowsPromise]);
 
-    res.render('features', { title: 'Features', features });
+    res.render('features', { title: 'Features', features, workflows });
 };
 
 exports.updateFeature= async (req, res) => {
