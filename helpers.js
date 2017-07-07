@@ -29,6 +29,21 @@ exports.getStage = (review) => {
   return stage;
 };
 
+exports.tooltip = (workflow, review) => {
+  let tooltip = workflow.name;
+  if (review) {
+    if (review.rating) {
+      tooltip = tooltip + ` ~ Rating: ${review.rating} of 3`;
+    }
+    if(review.milestone && review.milestone) {
+      tooltip = tooltip + ` ~ Milestone: ${review.milestone.name}`;
+    }
+  } else {
+    tooltip = tooltip + ' ~ Not Reviewed';
+  }
+  return tooltip;
+};
+
 
 // Some details about the site
 exports.siteName = `Roadmap`;

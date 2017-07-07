@@ -7,14 +7,15 @@ mixin featureListItem(feature, workflows)
                     input(type="submit" style="visibility: hidden;")
             div
                 .listitem__body--title
-                    a(href=`/feature/${feature.slug}` data-tooltip=feature.description) #{feature.name}
+                    a(href=`/feature/${feature.slug}`) #{feature.name}
                 .listitem__body--text
                     div #{feature.description}
                 .listitem__body--chart
                     each workflow in workflows
                         - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
                         - const stage = h.getStage(review); 
-                        .listitem__body--cell(class=`color${stage}`)
+                        - const tooltip = h.tooltip(workflow, review);
+                        .listitem__body--cell(class=`color${stage}` data-tooltip=tooltip)
                             .listitem__body--stars
                                 if !review || !review.milestone
                                     = 'Not Reviewed'
