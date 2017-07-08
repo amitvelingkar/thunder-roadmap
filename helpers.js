@@ -51,7 +51,8 @@ exports.siteName = `Roadmap`;
 exports.menu = [
   { slug: '/features', title: 'Features', icon: 'cake', },
   { slug: '/workflows', title: 'Workflows', icon: 'workflow', },
-  { slug: '/milestones', title: 'Milestones', icon: 'milestone', }
+  { slug: '/milestones', title: 'Milestones', icon: 'milestone', },
+  { slug: '/growths', title: 'Growth', icon: 'local_florist', }
 ];
 
 exports.ratings = [

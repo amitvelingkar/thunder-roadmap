@@ -4,6 +4,7 @@ const userController = require('../controllers/UserController');
 const authController = require('../controllers/AuthController');
 const workflowController = require('../controllers/WorkflowController');
 const milestoneController = require('../controllers/MilestoneController');
+const growthController = require('../controllers/GrowthController');
 const featureController = require('../controllers/FeatureController');
 const reviewController = require('../controllers/ReviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
@@ -55,11 +56,29 @@ router.get('/features/:id/edit',
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
-/*
-router.post('/feature/:id/rank',
-    catchErrors(featureController.updateRank)
+router.get('/growths', catchErrors(growthController.getGrowths));
+router.get('/growth/add',
+    authController.isLoggedIn,
+    growthController.addGrowth
 );
-*/
+router.post('/growth/add',
+    catchErrors(growthController.createGrowth)
+);
+router.post('/growth/add/:id',
+    catchErrors(growthController.updateGrowth)
+);
+router.get('/growths/:id/edit', catchErrors(growthController.editGrowth));
+router.post('/growth/add/:id',
+    catchErrors(growthController.updateGrowth)
+);
+router.post('/growth/:id/moveup',
+    catchErrors(growthController.moveUp),
+    catchErrors(growthController.reorderAll)
+);
+router.post('/growth/:id/movedown',
+    catchErrors(growthController.moveDown),
+    catchErrors(growthController.reorderAll)
+);
 
 router.get('/milestones', catchErrors(milestoneController.getMilestones));
 router.get('/milestone/add',

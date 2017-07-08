@@ -22,6 +22,10 @@ const featureSchema = new mongoose.Schema({
         type: Number,
         min: 0
     },
+    growth: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Growth'
+    },
     author: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
@@ -38,6 +42,12 @@ featureSchema.virtual('reviews', {
     localField: '_id', // which field on the store to match a review
     foreignField: 'feature' // which field on the review to match the feature
 });
+
+// hooks to auto-populate milestone on find and findOne
+function autoPopulate(next) {
+    this.populate('growth');
+    next();
+}
 
 featureSchema.pre('save', async function(next) {
     if (!this.isModified('name')) {
@@ -58,5 +68,8 @@ featureSchema.pre('save', async function(next) {
 
     next();
 });
+
+featureSchema.pre('find', autoPopulate);
+featureSchema.pre('findOne', autoPopulate);
 
 module.exports = mongoose.model('Feature', featureSchema);

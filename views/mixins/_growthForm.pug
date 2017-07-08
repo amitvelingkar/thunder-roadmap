@@ -1,0 +1,7 @@
+mixin growthForm(growth = {})
+    form(action=`/growth/add/${growth._id || ''}` method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name" value=growth.name)
+        label(for="description") Description
+        input(type="text" name="description" value=growth.description)
+        input(type="submit" value="Save" class="button")

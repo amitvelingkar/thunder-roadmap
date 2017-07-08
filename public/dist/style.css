@@ -19,6 +19,42 @@ body {
     .inner {
       padding: 2rem; } }
 
+.subheader {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+  .subheader__mainAction {
+    height: auto;
+    padding: 10px; }
+  .subheader__back {
+    margin-right: 10px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #fff;
+    margin-left: -68px; }
+    .subheader__back svg {
+      fill: #333; }
+  .subheader__text--title {
+    font-size: 5rem;
+    font-family: 'Panama';
+    font-weight: 600;
+    letter-spacing: -1px; }
+  .subheader__text--subtitle {
+    margin-top: -35px;
+    color: #999; }
+  .subheader__text--edit {
+    width: 30px;
+    border-radius: 50%;
+    padding: 3px;
+    margin-left: 10px; }
+    .subheader__text--edit:hover {
+      border: 1px solid #ccc;
+      background-color: white; }
+
 html {
   box-sizing: border-box; }
 
@@ -735,6 +771,7 @@ label {
   background: white;
   position: relative;
   padding: 3rem;
+  padding-top: 0.25rem;
   margin-top: 2rem;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15); }
 
@@ -783,7 +820,8 @@ label {
   background: none;
   border: 0;
   outline: 0;
-  position: relative; }
+  position: relative;
+  width: 20px; }
   .star__button:after {
     content: '\2605';
     font-size: 20px;
@@ -791,12 +829,12 @@ label {
     opacity: 0;
     top: 0; }
   .star__button svg {
-    width: 25px;
+    width: 20px;
     fill: #999; }
   .star__button--starred svg {
-    fill: orange; }
+    fill: #F50057; }
   .star__button--float svg {
-    fill: orange; }
+    fill: #F50057; }
   .star__button--float:after {
     animation: fly 2.5s 1 ease-out; }
 
@@ -883,7 +921,8 @@ label {
     width: 160px;
     margin-left: 3rem; }
   .review__comment {
-    margin-left: 3rem; }
+    margin-left: 3rem;
+    width: 500px; }
   .review__row {
     display: -ms-flexbox;
     display: flex;
@@ -891,6 +930,12 @@ label {
     -ms-flex-align: center;
         align-items: center;
     padding-top: 1rem;
+    padding-bottom: 1rem; }
+  .review__header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
     padding-bottom: 1rem; }
 
 .hide {
@@ -978,6 +1023,35 @@ pre.error {
       color: #999;
       line-height: 1;
       padding-top: 5px; }
+    .listitem__body--chart {
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 6px; }
+      .listitem__body--chart .color1 {
+        background: #F44336; }
+      .listitem__body--chart .color2 {
+        background: #FF9800; }
+      .listitem__body--chart .color3 {
+        background: #FFD740; }
+      .listitem__body--chart .color4 {
+        background: #CDDC39; }
+      .listitem__body--chart .color5 {
+        background: #4CAF50; }
+      .listitem__body--chart .color0 {
+        background: #BDBDBD; }
+    .listitem__body--cell {
+      display: -ms-flexbox;
+      display: flex;
+      width: 75px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-right: 3px;
+      padding: 2px;
+      font-size: x-small; }
+    .listitem__body--stars {
+      color: #333;
+      text-align: center;
+      width: 100%; }
   .listitem__order {
     font-size: 2rem;
     line-height: 1;
@@ -1028,5 +1102,62 @@ pre.error {
     fill: #aaa; }
   .add__button--added svg {
     fill: orange; }
+
+/**
+ * Tooltip Styles
+ */
+/* Base styles for the element that has a tooltip */
+[data-tooltip],
+.tooltip {
+  position: relative;
+  cursor: pointer; }
+  [data-tooltip]:before, [data-tooltip]:after,
+  .tooltip:before,
+  .tooltip:after {
+    position: absolute;
+    visibility: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    transform: translate3d(0, 0, 0);
+    pointer-events: none; }
+  [data-tooltip]:hover:before, [data-tooltip]:hover:after, [data-tooltip]:focus:before, [data-tooltip]:focus:after,
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+    -ms-transform: translateY(-12px);
+        transform: translateY(-12px); }
+  [data-tooltip]:before,
+  .tooltip:before {
+    z-index: 1001;
+    border: 6px solid transparent;
+    background: transparent;
+    content: "";
+    bottom: 100%;
+    left: 50%;
+    margin-left: -6px;
+    margin-bottom: -12px;
+    border-top-color: #000;
+    border-top-color: rgba(51, 51, 51, 0.9); }
+  [data-tooltip]:after,
+  .tooltip:after {
+    z-index: 1000;
+    padding: 8px;
+    width: 160px;
+    background-color: #000;
+    background-color: rgba(51, 51, 51, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    font-size: 14px;
+    line-height: 1.2;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -80px; }
 
 /*# sourceMappingURL=style.css.map*/

@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_growthForm
+include mixins/_growthListItem
+
+block content
+    .inner
+        h2 #{title}
+        .listitems
+            each growth in growths
+                    +growthListItem(growth)
+        h3= 'Add New Growth Target'
+        +growthForm()

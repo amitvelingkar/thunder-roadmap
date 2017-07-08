@@ -24,6 +24,7 @@ require('./models/user');
 require('./models/workflow');
 require('./models/feature');
 require('./models/milestone');
+require('./models/growth');
 require('./models/review');
 
 // Start our app!
