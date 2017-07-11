@@ -12,6 +12,6 @@ block content
                     a(href='/features') Refresh Page
         .listitems
             each feature in features
-                    +featureListItem(feature, workflows)
+                +featureListItem(feature, workflows)
         h3= 'Add New Feature'
         +featureForm()

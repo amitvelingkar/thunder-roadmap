@@ -89,6 +89,16 @@
         color: #999;
         font-style: italic;
     }
+    &__meta {
+        display: flex;
+        align-items: center;
+        &--growth {
+            font-size: 1.5rem;
+            color: grey;
+            text-align: right;
+            margin-right: 1rem;
+        }
+    }
     &__actions {
         display: flex;
     }

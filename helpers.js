@@ -29,7 +29,7 @@ exports.getStage = (review) => {
   return stage;
 };
 
-exports.tooltip = (workflow, review) => {
+exports.reviewTooltip = (workflow, review) => {
   let tooltip = workflow.name;
   if (review) {
     if (review.rating) {
@@ -43,7 +43,6 @@ exports.tooltip = (workflow, review) => {
   }
   return tooltip;
 };
-
 
 // Some details about the site
 exports.siteName = `Roadmap`;
