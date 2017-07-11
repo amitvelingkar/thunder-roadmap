@@ -4,10 +4,14 @@
         width: 100%;
         &--grp{
             display: flex;
+            margin-bottom: 1rem;
             label {
                 width: 110px;
                 margin-right: 2rem;
                 color: #666;
+            }
+            select {
+                width: 200px;
             }
         }
     }

@@ -8,6 +8,13 @@ mixin updateFeatureForm(feature)
                     each growth in growths
                         - const isSelected = feature.growth && growth._id.equals(feature.growth._id);
                         option(label=growth.name value=growth._id selected=isSelected)
+            .featureform__col--grp
+                label(for="sentiment") Sentiment
+                select.feature__sentiment(data-feature=feature._id)
+                    option(label='Not Selected' value=undefined selected=isSelected)
+                    each sentiment in sentiments
+                        - const isSelected = feature.sentiment && sentiment._id.equals(feature.sentiment._id);
+                        option(label=sentiment.name value=sentiment._id selected=isSelected)
         .featureform__col.featureform__col2
             .featureform__col--grp
                 label(for="description") Description

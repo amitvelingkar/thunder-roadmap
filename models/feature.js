@@ -26,6 +26,10 @@ const featureSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Growth'
     },
+    sentiment: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Sentiment'
+    },
     author: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
@@ -45,7 +49,7 @@ featureSchema.virtual('reviews', {
 
 // hooks to auto-populate milestone on find and findOne
 function autoPopulate(next) {
-    this.populate('growth');
+    this.populate(['growth', 'sentiment']);
     next();
 }
 

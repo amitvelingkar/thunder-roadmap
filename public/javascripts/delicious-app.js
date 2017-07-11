@@ -7,6 +7,7 @@ import ajaxRank from './modules/rank';
 import ajaxComment from './modules/comment';
 import ajaxMilestone from './modules/milestone';
 import ajaxGrowth from './modules/growth';
+import ajaxSentiment from './modules/sentiment';
 import ajaxFeatureName from './modules/feature-name';
 import ajaxFeatureDesc from './modules/feature-description';
 
@@ -34,3 +35,6 @@ milestoneSelector.on('change', ajaxMilestone);
 
 const growthSelector = $$('.feature__growth');
 growthSelector.on('change', ajaxGrowth);
+
+const sentimentSelector = $$('.feature__sentiment');
+sentimentSelector.on('change', ajaxSentiment);

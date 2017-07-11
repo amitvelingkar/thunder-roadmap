@@ -3,6 +3,7 @@ const Feature = mongoose.model('Feature');
 const Workflow= mongoose.model('Workflow');
 const Milestone = mongoose.model('Milestone');
 const Growth = mongoose.model('Growth');
+const Sentiment = mongoose.model('Sentiment');
 
 exports.addFeature = (req, res) => {
     res.render('editFeature', { title: 'Add Feature' });
@@ -70,6 +71,14 @@ exports.updateGrowth = async (req, res) => {
     res.json(feature);
 };
 
+exports.updateSentiment = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {sentiment: req.body.sentiment}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
 exports.getFeatureBySlug = async (req, res, next) => {
     // 1. find the feature given the id
     const featurePromise = Feature
@@ -79,8 +88,9 @@ exports.getFeatureBySlug = async (req, res, next) => {
     const workflowsPromise = Workflow.find().sort({ order: 1 });
     const milestonesPromise = Milestone.find().sort({ order: 1 });
     const growthsPromise = Growth.find().sort({ order: 1 });
+    const sentimentsPromise = Sentiment.find().sort({ order: 1 });
 
-    const [feature,workflows,milestones,growths] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise,growthsPromise]);
+    const [feature,workflows,milestones,growths,sentiments] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise,growthsPromise,sentimentsPromise]);
 
     if (!feature) return next();
 
@@ -88,5 +98,5 @@ exports.getFeatureBySlug = async (req, res, next) => {
     // TODO
 
     // 3. render the page to view the feature
-    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones, growths });
+    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones, growths, sentiments });
 };

@@ -169,5 +169,6 @@ router.post('/api/v1/feature/:id/rank', catchErrors(featureController.updateRank
 router.post('/api/v1/feature/:id/name', catchErrors(featureController.updateName));
 router.post('/api/v1/feature/:id/description', catchErrors(featureController.updateDesc));
 router.post('/api/v1/feature/:id/growth', catchErrors(featureController.updateGrowth));
+router.post('/api/v1/feature/:id/sentiment', catchErrors(featureController.updateSentiment));
 
 module.exports = router;
