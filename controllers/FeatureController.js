@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Feature = mongoose.model('Feature');
 const Workflow= mongoose.model('Workflow');
 const Milestone = mongoose.model('Milestone');
+const Growth = mongoose.model('Growth');
 
 exports.addFeature = (req, res) => {
     res.render('editFeature', { title: 'Add Feature' });
@@ -37,19 +38,32 @@ exports.updateFeature= async (req, res) => {
     res.redirect(`/features`);
 };
 
-exports.editFeature = async (req, res) => {
-    // 1. find the feature given the id
-    const feature = await Feature.findOne({ _id: req.params.id });
-
-    // 2. confirm they are the owner of the feature
-    // confirmOwner(feature, req.user);
-
-    // 3. render edit form for users to edit the feature
-    res.render('editFeature', { title: `Edit ${feature.name}`, feature });
-};
-
 exports.updateRank = async (req, res) => {
     const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {stackrank: req.body.stackrank}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+exports.updateName = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {name: req.body.name}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+exports.updateDesc = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {description: req.body.description}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+exports.updateGrowth = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {growth: req.body.growth}, {
         new: true
     }).exec();
 
@@ -64,8 +78,9 @@ exports.getFeatureBySlug = async (req, res, next) => {
 
     const workflowsPromise = Workflow.find().sort({ order: 1 });
     const milestonesPromise = Milestone.find().sort({ order: 1 });
+    const growthsPromise = Growth.find().sort({ order: 1 });
 
-    const [feature,workflows,milestones] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise]);
+    const [feature,workflows,milestones,growths] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise,growthsPromise]);
 
     if (!feature) return next();
 
@@ -73,5 +88,5 @@ exports.getFeatureBySlug = async (req, res, next) => {
     // TODO
 
     // 3. render the page to view the feature
-    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones });
+    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones, growths });
 };

@@ -1,0 +1,15 @@
+mixin updateFeatureForm(feature)
+    .featureform
+        .featureform__col.featureform__col1
+            .featureform__col--grp
+                label(for="growth") Growth Targets
+                select.feature__growth(data-feature=feature._id)
+                    option(label='Not Selected' value=undefined selected=isSelected)
+                    each growth in growths
+                        - const isSelected = feature.growth && growth._id.equals(feature.growth._id);
+                        option(label=growth.name value=growth._id selected=isSelected)
+        .featureform__col.featureform__col2
+            .featureform__col--grp
+                label(for="description") Description
+                textarea.feature__description(name="description" placeholder="Describe this feature..." data-feature=feature._id) #{feature.description}
+        

@@ -1,0 +1,20 @@
+.featureform {
+    display: flex;
+    &__col {
+        width: 100%;
+        &--grp{
+            display: flex;
+            label {
+                width: 110px;
+                margin-right: 2rem;
+                color: #666;
+            }
+        }
+    }
+    &__col1 {
+
+    }
+    &__col2 {
+        margin-left: 8rem;
+    }
+}

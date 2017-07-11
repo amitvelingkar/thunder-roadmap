@@ -3,6 +3,7 @@ extends layout
 include mixins/_ratingForm
 include mixins/_milestoneSelector
 include mixins/_commentForm
+include mixins/_updateFeatureForm
 
 block content
     .inner
@@ -11,10 +12,11 @@ block content
                 a(href=`/features`)
                     != h.icon('arrow_back')
             .subheader__text
-                .subheader__text--title= title
-            a.subheader__text--edit(href=`/features/${feature._id}/edit`)
-                    != h.icon('pencil')
-        .subheader__text--subtitle= feature.description
+                .subheader__text--title
+                    input.feature__name(type="text" name="name" value=feature.name data-feature=feature._id)
+    .single__details.inner
+        .single__content
+            + updateFeatureForm(feature)
     .single__details.inner
         .single__content
             .review__header

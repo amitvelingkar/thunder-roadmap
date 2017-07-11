@@ -49,10 +49,7 @@ router.post('/feature/add',
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
-router.get('/features/:id/edit',
-    authController.isLoggedIn,
-    catchErrors(featureController.editFeature)
-);
+
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
@@ -143,5 +140,8 @@ router.post('/api/v1/feature/:id/review/rating', catchErrors(reviewController.ra
 router.post('/api/v1/feature/:id/review/comment', catchErrors(reviewController.comment));
 router.post('/api/v1/feature/:id/review/milestone', catchErrors(reviewController.milestone));
 router.post('/api/v1/feature/:id/rank', catchErrors(featureController.updateRank));
+router.post('/api/v1/feature/:id/name', catchErrors(featureController.updateName));
+router.post('/api/v1/feature/:id/description', catchErrors(featureController.updateDesc));
+router.post('/api/v1/feature/:id/growth', catchErrors(featureController.updateGrowth));
 
 module.exports = router;
