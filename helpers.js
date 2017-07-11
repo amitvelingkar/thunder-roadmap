@@ -48,10 +48,11 @@ exports.reviewTooltip = (workflow, review) => {
 exports.siteName = `Roadmap`;
 
 exports.menu = [
-  { slug: '/features', title: 'Features', icon: 'cake', },
-  { slug: '/workflows', title: 'Workflows', icon: 'workflow', },
-  { slug: '/milestones', title: 'Milestones', icon: 'milestone', },
-  { slug: '/growths', title: 'Growth', icon: 'local_florist', }
+  { slug: '/features', title: 'Features', icon: 'cake' },
+  { slug: '/workflows', title: 'Workflows', icon: 'workflow' },
+  { slug: '/milestones', title: 'Milestones', icon: 'milestone' },
+  { slug: '/growths', title: 'Growth', icon: 'local_florist' },
+  { slug: '/sentiments', title: 'Mood', icon: 'mood' }
 ];
 
 exports.ratings = [

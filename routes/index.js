@@ -5,6 +5,7 @@ const authController = require('../controllers/AuthController');
 const workflowController = require('../controllers/WorkflowController');
 const milestoneController = require('../controllers/MilestoneController');
 const growthController = require('../controllers/GrowthController');
+const sentimentController = require('../controllers/SentimentController');
 const featureController = require('../controllers/FeatureController');
 const reviewController = require('../controllers/ReviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
@@ -75,6 +76,31 @@ router.post('/growth/:id/moveup',
 router.post('/growth/:id/movedown',
     catchErrors(growthController.moveDown),
     catchErrors(growthController.reorderAll)
+);
+
+
+router.get('/sentiments', catchErrors(sentimentController.getSentiments));
+router.get('/sentiment/add',
+    authController.isLoggedIn,
+    sentimentController.addSentiment
+);
+router.post('/sentiment/add',
+    catchErrors(sentimentController.createSentiment)
+);
+router.post('/sentiment/add/:id',
+    catchErrors(sentimentController.updateSentiment)
+);
+router.get('/sentiments/:id/edit', catchErrors(sentimentController.editSentiment));
+router.post('/sentiment/add/:id',
+    catchErrors(sentimentController.updateSentiment)
+);
+router.post('/sentiment/:id/moveup',
+    catchErrors(sentimentController.moveUp),
+    catchErrors(sentimentController.reorderAll)
+);
+router.post('/sentiment/:id/movedown',
+    catchErrors(sentimentController.moveDown),
+    catchErrors(sentimentController.reorderAll)
 );
 
 router.get('/milestones', catchErrors(milestoneController.getMilestones));

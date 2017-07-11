@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_sentimentForm
+include mixins/_sentimentListItem
+
+block content
+    .inner
+        h2 #{title}
+        .listitems
+            each sentiment in sentiments
+                    +sentimentListItem(sentiment)
+        h3= 'Add New Sentiment'
+        +sentimentForm()
