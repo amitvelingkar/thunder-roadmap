@@ -48,19 +48,19 @@ exports.getSentimentIcon = (sentiment) => {
   let moodIcon = this.icon('sentiment_neutral');
   if (sentiment) {
     switch (sentiment.order) {
-      case 0:
+      case 1:
         moodIcon = this.icon('sentiment_very_dissatisfied');
         break;
-      case 1:
+      case 2:
         moodIcon = this.icon('sentiment_dissatisfied');
         break;
-      case 2:
+      case 3:
         moodIcon = this.icon('sentiment_neutral');
         break;
-      case 3:
+      case 4:
         moodIcon = this.icon('sentiment_satisfied');
         break;
-      case 4:
+      case 5:
         moodIcon = this.icon('sentiment_very_satisfied');
         break;
       default:
