@@ -194,5 +194,7 @@ router.post('/api/v1/feature/:id/name', catchErrors(featureController.updateName
 router.post('/api/v1/feature/:id/description', catchErrors(featureController.updateDesc));
 router.post('/api/v1/feature/:id/growth', catchErrors(featureController.updateGrowth));
 router.post('/api/v1/feature/:id/sentiment', catchErrors(featureController.updateSentiment));
-
+router.post('/api/v1/feature/:id/cost', catchErrors(featureController.updateCost));
+router.post('/api/v1/feature/:id/target-milestone', catchErrors(featureController.updateTargetMilestone));
+router.post('/api/v1/feature/:id/blocked', catchErrors(featureController.updateBlocked));
 module.exports = router;

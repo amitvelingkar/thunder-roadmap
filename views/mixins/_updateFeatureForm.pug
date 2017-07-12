@@ -9,14 +9,34 @@ mixin updateFeatureForm(feature)
                         - const isSelected = feature.growth && growth._id.equals(feature.growth._id);
                         option(label=growth.name value=growth._id selected=isSelected)
             .featureform__col--grp
+                label(for="milestone") Milestone Target
+                select.feature__targetMilestone(data-feature=feature._id)
+                    option(label='Not Selected' value=undefined selected=isSelected)
+                    each milestone in milestones
+                        - const isSelected = feature.targetMilestone && milestone._id.equals(feature.targetMilestone._id);
+                        option(label=milestone.name value=milestone._id selected=isSelected)
+            .featureform__col--grp
                 label(for="sentiment") Sentiment
                 select.feature__sentiment(data-feature=feature._id)
                     option(label='Not Selected' value=undefined selected=isSelected)
                     each sentiment in sentiments
                         - const isSelected = feature.sentiment && sentiment._id.equals(feature.sentiment._id);
                         option(label=sentiment.name value=sentiment._id selected=isSelected)
+            .featureform__col--grp
+                label(for="cost") Cost
+                select.feature__cost(data-feature=feature._id)
+                    option(label='Not Selected' value=undefined selected=isSelected)
+                    each cost in costs
+                        - const isSelected = feature.cost && cost._id.equals(feature.cost._id);
+                        option(label=cost.name value=cost._id selected=isSelected)
         .featureform__col.featureform__col2
             .featureform__col--grp
                 label(for="description") Description
                 textarea.feature__description(name="description" placeholder="Describe this feature..." data-feature=feature._id) #{feature.description}
+            .featureform__col--switch
+                label.label(for="blocked") Blocked
+                label.switch
+                    input.feature__blocked(name="blocked" type="checkbox")
+                    span.slider.round
+
         

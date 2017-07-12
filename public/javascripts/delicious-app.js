@@ -7,6 +7,8 @@ import ajaxRank from './modules/rank';
 import ajaxComment from './modules/comment';
 import ajaxMilestone from './modules/milestone';
 import ajaxGrowth from './modules/growth';
+import ajaxCost from './modules/cost';
+import ajaxTargetMilestone from './modules/target-milestone';
 import ajaxSentiment from './modules/sentiment';
 import ajaxFeatureName from './modules/feature-name';
 import ajaxFeatureDesc from './modules/feature-description';
@@ -38,3 +40,9 @@ growthSelector.on('change', ajaxGrowth);
 
 const sentimentSelector = $$('.feature__sentiment');
 sentimentSelector.on('change', ajaxSentiment);
+
+const costSelector = $$('.feature__cost');
+costSelector.on('change', ajaxCost);
+
+const targetMilestoneSelector = $$('.feature__targetMilestone');
+targetMilestoneSelector.on('change', ajaxTargetMilestone);

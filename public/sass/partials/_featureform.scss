@@ -6,12 +6,22 @@
             display: flex;
             margin-bottom: 1rem;
             label {
-                width: 110px;
+                width: 120px;
                 margin-right: 2rem;
                 color: #666;
             }
             select {
                 width: 200px;
+            }
+        }
+        &--switch{
+            display: flex;
+            margin-bottom: 1rem;
+            justify-content: space-between;
+            .label{
+                width: 120px;
+                margin-right: 2rem;
+                color: #666;
             }
         }
     }

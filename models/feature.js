@@ -30,6 +30,10 @@ const featureSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Milestone'
     },
+    cost: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Cost'
+    },
     growth: {
         type: mongoose.Schema.ObjectId,
         ref: 'Growth'
@@ -57,7 +61,7 @@ featureSchema.virtual('reviews', {
 
 // hooks to auto-populate milestone on find and findOne
 function autoPopulate(next) {
-    this.populate(['growth', 'sentiment', 'targetMilestone']);
+    this.populate(['growth', 'sentiment', 'targetMilestone', 'cost']);
     next();
 }
 

@@ -3,6 +3,7 @@ const Feature = mongoose.model('Feature');
 const Workflow= mongoose.model('Workflow');
 const Milestone = mongoose.model('Milestone');
 const Growth = mongoose.model('Growth');
+const Cost = mongoose.model('Cost');
 const Sentiment = mongoose.model('Sentiment');
 
 exports.addFeature = (req, res) => {
@@ -71,6 +72,31 @@ exports.updateGrowth = async (req, res) => {
     res.json(feature);
 };
 
+exports.updateCost = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {cost: req.body.cost}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+exports.updateTargetMilestone = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {targetMilestone: req.body.targetMilestone}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+exports.updateBlocked = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {blocked: req.body.blocked}, {
+        new: true
+    }).exec();
+
+    res.json(feature);
+};
+
+
 exports.updateSentiment = async (req, res) => {
     const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {sentiment: req.body.sentiment}, {
         new: true
@@ -89,8 +115,9 @@ exports.getFeatureBySlug = async (req, res, next) => {
     const milestonesPromise = Milestone.find().sort({ order: 1 });
     const growthsPromise = Growth.find().sort({ order: 1 });
     const sentimentsPromise = Sentiment.find().sort({ order: 1 });
+    const costsPromise = Cost.find().sort({ order: 1 });
 
-    const [feature,workflows,milestones,growths,sentiments] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise,growthsPromise,sentimentsPromise]);
+    const [feature,workflows,milestones,growths,sentiments,costs] = await Promise.all([featurePromise,workflowsPromise,milestonesPromise,growthsPromise,sentimentsPromise,costsPromise]);
 
     if (!feature) return next();
 
@@ -98,5 +125,5 @@ exports.getFeatureBySlug = async (req, res, next) => {
     // TODO
 
     // 3. render the page to view the feature
-    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones, growths, sentiments });
+    res.render('feature', { title: `${feature.name}`, feature, workflows, milestones, growths, sentiments, costs });
 };
