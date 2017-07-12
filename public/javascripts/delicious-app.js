@@ -10,7 +10,7 @@ import ajaxMilestone from './modules/milestone';
 import ajaxFeatureName from './modules/feature-name';
 import ajaxFeatureDesc from './modules/feature-description';
 import ajaxFeatureCost from './modules/feature-cost';
-import ajaxFeatureBlocked from './modules/feature-blocked';
+import ajaxFeatureDependency from './modules/feature-dependency';
 import ajaxFeatureTargetMilestone from './modules/feature-target-milestone';
 import ajaxFeatureGrowth from './modules/feature-growth';
 import ajaxFeatureSentiment from './modules/feature-sentiment';
@@ -49,5 +49,5 @@ costSelector.on('change', ajaxFeatureCost);
 const targetMilestoneSelector = $$('.feature__targetMilestone');
 targetMilestoneSelector.on('change', ajaxFeatureTargetMilestone);
 
-const blockedToggles = $$('.feature__blocked');
-blockedToggles.on('change', ajaxFeatureBlocked);
+const dependencyToggles = $$('.feature__dependency');
+dependencyToggles.on('change', ajaxFeatureDependency);

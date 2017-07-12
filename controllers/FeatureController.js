@@ -88,8 +88,8 @@ exports.updateTargetMilestone = async (req, res) => {
     res.json(feature);
 };
 
-exports.updateBlocked = async (req, res) => {
-    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {blocked: req.body.blocked}, {
+exports.updateDependency = async (req, res) => {
+    const feature = await Feature.findOneAndUpdate({ _id: req.params.id }, {dependency: req.body.dependency}, {
         new: true
     }).exec();
 

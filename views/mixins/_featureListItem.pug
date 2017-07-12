@@ -7,6 +7,12 @@ mixin featureListItem(feature, workflows)
             div
                 .listitem__body--title
                     a(href=`/feature/${feature.slug}`) #{feature.name}
+                    if feature.dependency || false
+                        .listitem__body--label.purple
+                            div dependency
+                    if feature.targetMilestone || false
+                        .listitem__body--label.purple
+                            div #{feature.targetMilestone.name}
                 .listitem__body--text
                     div #{feature.description}
                 .listitem__body--chart
@@ -16,23 +22,30 @@ mixin featureListItem(feature, workflows)
                         - const tooltip = h.reviewTooltip(workflow, review);
                         a.listitem__body--cell(class=`color${stage}` href=`/feature/${feature.slug}` data-tooltip=tooltip)
                             .listitem__body--stars
+                                - const maxStars = feature.targetMilestone ? (feature.targetMilestone.order - 1) : 6;
                                 if !review || !review.milestone
                                     = 'Not Reviewed'
                                 else if review.milestone.order > 1
                                     = `★`.repeat(review.milestone.order-1)
-                                    = `☆`.repeat(6-(review.milestone.order-1))
+                                    = `☆`.repeat(maxStars-(review.milestone.order-1))
                                 else
                                     = 'N/A'
         .listitem__meta
+            a(href=`/feature/${feature.slug}` data-tooltip=feature.cost ? feature.cost.description : 'Cost Not Set')
+                .listitem__meta--entry.listitem__meta--cost
+                    if !feature.cost
+                        = "---"
+                    else
+                        = feature.cost.shortName
             - const sentimentClass = feature.sentiment ? `sentiment${feature.sentiment.order}` : '';
             a(href=`/feature/${feature.slug}` data-tooltip=feature.sentiment ? feature.sentiment.name : 'Not Set')
-                .listitem__meta--sentiment(class=sentimentClass)
+                .listitem__meta--entry.listitem__meta--sentiment(class=sentimentClass)
                     if !feature.sentiment
                         = "N/A"
                     else
                         != h.getSentimentIcon(feature.sentiment)
             a(href=`/feature/${feature.slug}` data-tooltip=feature.growth ? feature.growth.name : 'Not Set')
-                .listitem__meta--growth
+                .listitem__meta--entry.listitem__meta--growth
                     if !feature.growth
                         = "N/A"
                     else if feature.growth.order > 1

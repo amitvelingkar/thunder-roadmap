@@ -196,5 +196,5 @@ router.post('/api/v1/feature/:id/growth', catchErrors(featureController.updateGr
 router.post('/api/v1/feature/:id/sentiment', catchErrors(featureController.updateSentiment));
 router.post('/api/v1/feature/:id/cost', catchErrors(featureController.updateCost));
 router.post('/api/v1/feature/:id/target-milestone', catchErrors(featureController.updateTargetMilestone));
-router.post('/api/v1/feature/:id/blocked', catchErrors(featureController.updateBlocked));
+router.post('/api/v1/feature/:id/dependency', catchErrors(featureController.updateDependency));
 module.exports = router;

@@ -22,7 +22,7 @@ const featureSchema = new mongoose.Schema({
         type: Number,
         min: 0
     },
-    blocked: {
+    dependency: {
         type: Boolean,
         default: false
     },

@@ -34,7 +34,7 @@ mixin updateFeatureForm(feature)
                 label(for="description") Description
                 textarea.feature__description(name="description" placeholder="Describe this feature..." data-feature=feature._id readonly=!h.isUserManager(user)) #{feature.description}
             .featureform__col--switch
-                label.label(for="blocked") Blocked
+                label.label(for="dependency") Dependency
                 label.switch
-                    input.feature__blocked(name="blocked" type="checkbox" data-feature=feature._id disabled=!h.isUserManager(user) checked= feature.blocked || false)
+                    input.feature__dependency(name="dependency" type="checkbox" data-feature=feature._id disabled=!h.isUserManager(user) checked= feature.dependency || false)
                     span.slider.round
