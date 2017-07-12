@@ -12,8 +12,14 @@ const reviewController = require('../controllers/ReviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
-router.get('/', catchErrors(featureController.getFeatures));
-router.get('/workflows', catchErrors(workflowController.getWorkflows));
+router.get('/',
+    authController.isLoggedIn,
+    catchErrors(featureController.getFeatures)
+);
+router.get('/workflows',
+    authController.isLoggedIn,
+    catchErrors(workflowController.getWorkflows)
+);
 router.get('/workflow/add',
     authController.isLoggedIn,
     workflowController.addWorkflow
@@ -24,7 +30,10 @@ router.post('/workflow/add',
 router.post('/workflow/add/:id',
     catchErrors(workflowController.updateWorkflow)
 );
-router.get('/workflows/:id/edit', catchErrors(workflowController.editWorkflow));
+router.get('/workflows/:id/edit', 
+    authController.isLoggedIn,
+    catchErrors(workflowController.editWorkflow)
+);
 router.post('/workflow/add/:id',
     catchErrors(workflowController.updateWorkflow)
 );
@@ -36,7 +45,10 @@ router.post('/workflow/:id/movedown',
     catchErrors(workflowController.moveDown),
     catchErrors(workflowController.reorderAll)
 );
-router.get('/features', catchErrors(featureController.getFeatures));
+router.get('/features',
+    authController.isLoggedIn,
+    catchErrors(featureController.getFeatures)
+);
 router.get('/feature/:slug', 
     authController.isLoggedIn,
     catchErrors(featureController.getFeatureBySlug)
@@ -55,7 +67,10 @@ router.post('/feature/add/:id',
 router.post('/feature/add/:id',
     catchErrors(featureController.updateFeature)
 );
-router.get('/growths', catchErrors(growthController.getGrowths));
+router.get('/growths',
+    authController.isLoggedIn,
+    catchErrors(growthController.getGrowths)
+);
 router.get('/growth/add',
     authController.isLoggedIn,
     growthController.addGrowth
@@ -66,7 +81,10 @@ router.post('/growth/add',
 router.post('/growth/add/:id',
     catchErrors(growthController.updateGrowth)
 );
-router.get('/growths/:id/edit', catchErrors(growthController.editGrowth));
+router.get('/growths/:id/edit',
+    authController.isLoggedIn,
+    catchErrors(growthController.editGrowth)
+);
 router.post('/growth/add/:id',
     catchErrors(growthController.updateGrowth)
 );
@@ -79,7 +97,10 @@ router.post('/growth/:id/movedown',
     catchErrors(growthController.reorderAll)
 );
 
-router.get('/costs', catchErrors(costController.getCosts));
+router.get('/costs',
+    authController.isLoggedIn,
+    catchErrors(costController.getCosts)
+);
 router.get('/cost/add',
     authController.isLoggedIn,
     costController.addCost
@@ -90,7 +111,10 @@ router.post('/cost/add',
 router.post('/cost/add/:id',
     catchErrors(costController.updateCost)
 );
-router.get('/costs/:id/edit', catchErrors(costController.editCost));
+router.get('/costs/:id/edit',
+    authController.isLoggedIn,
+    catchErrors(costController.editCost)
+);
 router.post('/cost/add/:id',
     catchErrors(costController.updateCost)
 );
@@ -103,7 +127,10 @@ router.post('/cost/:id/movedown',
     catchErrors(costController.reorderAll)
 );
 
-router.get('/sentiments', catchErrors(sentimentController.getSentiments));
+router.get('/sentiments',
+    authController.isLoggedIn,
+    catchErrors(sentimentController.getSentiments)
+);
 router.get('/sentiment/add',
     authController.isLoggedIn,
     sentimentController.addSentiment
@@ -114,7 +141,10 @@ router.post('/sentiment/add',
 router.post('/sentiment/add/:id',
     catchErrors(sentimentController.updateSentiment)
 );
-router.get('/sentiments/:id/edit', catchErrors(sentimentController.editSentiment));
+router.get('/sentiments/:id/edit',
+    authController.isLoggedIn,
+    catchErrors(sentimentController.editSentiment)
+);
 router.post('/sentiment/add/:id',
     catchErrors(sentimentController.updateSentiment)
 );
@@ -127,7 +157,10 @@ router.post('/sentiment/:id/movedown',
     catchErrors(sentimentController.reorderAll)
 );
 
-router.get('/milestones', catchErrors(milestoneController.getMilestones));
+router.get('/milestones',
+    authController.isLoggedIn,
+    catchErrors(milestoneController.getMilestones)
+);
 router.get('/milestone/add',
     authController.isLoggedIn,
     milestoneController.addMilestone
