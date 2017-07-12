@@ -6,12 +6,14 @@ import ajaxStar from './modules/star';
 import ajaxRank from './modules/rank';
 import ajaxComment from './modules/comment';
 import ajaxMilestone from './modules/milestone';
-import ajaxGrowth from './modules/growth';
-import ajaxCost from './modules/cost';
-import ajaxTargetMilestone from './modules/target-milestone';
-import ajaxSentiment from './modules/sentiment';
+
 import ajaxFeatureName from './modules/feature-name';
 import ajaxFeatureDesc from './modules/feature-description';
+import ajaxFeatureCost from './modules/feature-cost';
+import ajaxFeatureBlocked from './modules/feature-blocked';
+import ajaxFeatureTargetMilestone from './modules/feature-target-milestone';
+import ajaxFeatureGrowth from './modules/feature-growth';
+import ajaxFeatureSentiment from './modules/feature-sentiment';
 
 const starForms = $$('form.star');
 starForms.on('submit', ajaxStar);
@@ -36,13 +38,16 @@ const milestoneSelector = $$('.review__milestone');
 milestoneSelector.on('change', ajaxMilestone);
 
 const growthSelector = $$('.feature__growth');
-growthSelector.on('change', ajaxGrowth);
+growthSelector.on('change', ajaxFeatureGrowth);
 
 const sentimentSelector = $$('.feature__sentiment');
-sentimentSelector.on('change', ajaxSentiment);
+sentimentSelector.on('change', ajaxFeatureSentiment);
 
 const costSelector = $$('.feature__cost');
-costSelector.on('change', ajaxCost);
+costSelector.on('change', ajaxFeatureCost);
 
 const targetMilestoneSelector = $$('.feature__targetMilestone');
-targetMilestoneSelector.on('change', ajaxTargetMilestone);
+targetMilestoneSelector.on('change', ajaxFeatureTargetMilestone);
+
+const blockedToggles = $$('.feature__blocked');
+blockedToggles.on('change', ajaxFeatureBlocked);

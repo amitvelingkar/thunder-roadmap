@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { $ } from './bling';
 
-function ajaxTargetMilestone(e) {
+function ajaxFeatureTargetMilestone(e) {
     e.preventDefault();
     axios
     .post(`/api/v1/feature/${this.dataset.feature}/target-milestone`, {
@@ -14,4 +14,4 @@ function ajaxTargetMilestone(e) {
     .catch(console.error);
 }
 
-export default ajaxTargetMilestone;
+export default ajaxFeatureTargetMilestone;

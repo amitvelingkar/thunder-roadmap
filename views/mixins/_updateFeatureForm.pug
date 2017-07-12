@@ -36,7 +36,5 @@ mixin updateFeatureForm(feature)
             .featureform__col--switch
                 label.label(for="blocked") Blocked
                 label.switch
-                    input.feature__blocked(name="blocked" type="checkbox")
+                    input.feature__blocked(name="blocked" type="checkbox" data-feature=feature._id checked= feature.blocked || false)
                     span.slider.round
-
-        

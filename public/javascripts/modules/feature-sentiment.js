@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { $ } from './bling';
 
-function ajaxSentiment(e) {
+function ajaxFeatureSentiment(e) {
     e.preventDefault();
     axios
     .post(`/api/v1/feature/${this.dataset.feature}/sentiment`, {
@@ -14,4 +14,4 @@ function ajaxSentiment(e) {
     .catch(console.error);
 }
 
-export default ajaxSentiment;
+export default ajaxFeatureSentiment;

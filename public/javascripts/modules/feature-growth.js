@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { $ } from './bling';
 
-function ajaxGrowth(e) {
+function ajaxFeatureGrowth(e) {
     e.preventDefault();
     axios
     .post(`/api/v1/feature/${this.dataset.feature}/growth`, {
@@ -14,4 +14,4 @@ function ajaxGrowth(e) {
     .catch(console.error);
 }
 
-export default ajaxGrowth;
+export default ajaxFeatureGrowth;

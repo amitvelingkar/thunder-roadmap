@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { $ } from './bling';
 
-function ajaxCost(e) {
+function ajaxFeatureCost(e) {
     e.preventDefault();
     axios
     .post(`/api/v1/feature/${this.dataset.feature}/cost`, {
@@ -14,4 +14,4 @@ function ajaxCost(e) {
     .catch(console.error);
 }
 
-export default ajaxCost;
+export default ajaxFeatureCost;
