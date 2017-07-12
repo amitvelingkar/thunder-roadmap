@@ -5,6 +5,7 @@ const authController = require('../controllers/AuthController');
 const workflowController = require('../controllers/WorkflowController');
 const milestoneController = require('../controllers/MilestoneController');
 const growthController = require('../controllers/GrowthController');
+const costController = require('../controllers/CostController');
 const sentimentController = require('../controllers/SentimentController');
 const featureController = require('../controllers/FeatureController');
 const reviewController = require('../controllers/ReviewController');
@@ -78,6 +79,29 @@ router.post('/growth/:id/movedown',
     catchErrors(growthController.reorderAll)
 );
 
+router.get('/costs', catchErrors(costController.getCosts));
+router.get('/cost/add',
+    authController.isLoggedIn,
+    costController.addCost
+);
+router.post('/cost/add',
+    catchErrors(costController.createCost)
+);
+router.post('/cost/add/:id',
+    catchErrors(costController.updateCost)
+);
+router.get('/costs/:id/edit', catchErrors(costController.editCost));
+router.post('/cost/add/:id',
+    catchErrors(costController.updateCost)
+);
+router.post('/cost/:id/moveup',
+    catchErrors(costController.moveUp),
+    catchErrors(costController.reorderAll)
+);
+router.post('/cost/:id/movedown',
+    catchErrors(costController.moveDown),
+    catchErrors(costController.reorderAll)
+);
 
 router.get('/sentiments', catchErrors(sentimentController.getSentiments));
 router.get('/sentiment/add',

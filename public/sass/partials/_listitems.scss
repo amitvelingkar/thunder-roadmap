@@ -34,6 +34,17 @@
             white-space:pre-wrap;
             font-size: 2rem;
             line-height: 1;
+            display: flex;
+        }
+        &--label {
+            font-size: 1.25rem;
+            background-color: purple;
+            color: white;
+            margin-left: 1rem;
+            padding: 0.25rem 0.5rem;
+            height: 100%;
+            font-weight: 300;
+            border-radius: 0.25rem;
         }
         &--subtitle,
         &--text{

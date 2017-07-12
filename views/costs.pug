@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_costForm
+include mixins/_costListItem
+
+block content
+    .inner
+        h2 #{title}
+        .listitems
+            each cost in costs
+                    +costListItem(cost)
+        h3= 'Add New T-Shirt Cost'
+        +costForm()

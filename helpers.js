@@ -78,7 +78,8 @@ exports.menu = [
   { slug: '/workflows', title: 'Workflows', icon: 'workflow' },
   { slug: '/milestones', title: 'Milestones', icon: 'milestone' },
   { slug: '/growths', title: 'Growth', icon: 'local_florist' },
-  { slug: '/sentiments', title: 'Mood', icon: 'mood' }
+  { slug: '/sentiments', title: 'Mood', icon: 'mood' },
+  { slug: '/costs', title: 'Cost', icon: 'work' }
 ];
 
 exports.ratings = [

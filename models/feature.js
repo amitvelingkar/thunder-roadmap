@@ -22,6 +22,14 @@ const featureSchema = new mongoose.Schema({
         type: Number,
         min: 0
     },
+    blocked: {
+        type: Boolean,
+        default: false
+    },
+    targetMilestone: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Milestone'
+    },
     growth: {
         type: mongoose.Schema.ObjectId,
         ref: 'Growth'
@@ -49,7 +57,7 @@ featureSchema.virtual('reviews', {
 
 // hooks to auto-populate milestone on find and findOne
 function autoPopulate(next) {
-    this.populate(['growth', 'sentiment']);
+    this.populate(['growth', 'sentiment', 'targetMilestone']);
     next();
 }
 

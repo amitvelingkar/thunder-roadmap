@@ -1,0 +1,9 @@
+mixin costForm(cost = {})
+    form(action=`/cost/add/${cost._id || ''}` method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name" value=cost.name)
+        label(for="shortName") Short Name (abbreviation)
+        input(type="text" name="shortName" value=cost.shortName)
+        label(for="description") Description
+        input(type="text" name="description" value=cost.description)
+        input(type="submit" value="Save" class="button")

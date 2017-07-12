@@ -27,6 +27,7 @@ require('./models/milestone');
 require('./models/growth');
 require('./models/review');
 require('./models/sentiment');
+require('./models/cost');
 
 // Start our app!
 const app = require('./app');
