@@ -7,15 +7,16 @@ mixin sentimentListItem(sentiment = {})
                     div #{sentiment.name}
                 .listitem__body--text
                     div #{sentiment.description}
-        .listitem__actions
-            .listitem__action.listitem__action--orderup
-                form(method="POST" action=`/sentiment/${sentiment._id}/moveup`)
-                    button.listitem__action--button(type="submit" name="up")
-                        != h.icon('arrow_up')
-            .listitem__action.listitem__action--orderdown
-                form(method="POST" action=`/sentiment/${sentiment._id}/movedown`)
-                    button.listitem__action--button(type="submit" name="down")
-                        != h.icon('arrow_down')
-            .listitem__action.listitem__action--edit
-                a(href=`/sentiments/${sentiment._id}/edit`)
-                    != h.icon('edit')
+        if h.isUserManager(user)
+            .listitem__actions
+                .listitem__action.listitem__action--orderup
+                    form(method="POST" action=`/sentiment/${sentiment._id}/moveup`)
+                        button.listitem__action--button(type="submit" name="up")
+                            != h.icon('arrow_up')
+                .listitem__action.listitem__action--orderdown
+                    form(method="POST" action=`/sentiment/${sentiment._id}/movedown`)
+                        button.listitem__action--button(type="submit" name="down")
+                            != h.icon('arrow_down')
+                .listitem__action.listitem__action--edit
+                    a(href=`/sentiments/${sentiment._id}/edit`)
+                        != h.icon('edit')

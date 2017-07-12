@@ -3,28 +3,28 @@ mixin updateFeatureForm(feature)
         .featureform__col.featureform__col1
             .featureform__col--grp
                 label(for="growth") Growth Targets
-                select.feature__growth(data-feature=feature._id)
+                select.feature__growth(data-feature=feature._id disabled=!h.isUserManager(user))
                     option(label='Not Selected' value=undefined selected=isSelected)
                     each growth in growths
                         - const isSelected = feature.growth && growth._id.equals(feature.growth._id);
                         option(label=growth.name value=growth._id selected=isSelected)
             .featureform__col--grp
                 label(for="milestone") Milestone Target
-                select.feature__targetMilestone(data-feature=feature._id)
+                select.feature__targetMilestone(data-feature=feature._id disabled=!h.isUserManager(user))
                     option(label='Not Selected' value=undefined selected=isSelected)
                     each milestone in milestones
                         - const isSelected = feature.targetMilestone && milestone._id.equals(feature.targetMilestone._id);
                         option(label=milestone.name value=milestone._id selected=isSelected)
             .featureform__col--grp
                 label(for="sentiment") Sentiment
-                select.feature__sentiment(data-feature=feature._id)
+                select.feature__sentiment(data-feature=feature._id disabled=!h.isUserManager(user))
                     option(label='Not Selected' value=undefined selected=isSelected)
                     each sentiment in sentiments
                         - const isSelected = feature.sentiment && sentiment._id.equals(feature.sentiment._id);
                         option(label=sentiment.name value=sentiment._id selected=isSelected)
             .featureform__col--grp
                 label(for="cost") Cost
-                select.feature__cost(data-feature=feature._id)
+                select.feature__cost(data-feature=feature._id disabled=!h.isUserManager(user))
                     option(label='Not Selected' value=undefined selected=isSelected)
                     each cost in costs
                         - const isSelected = feature.cost && cost._id.equals(feature.cost._id);
@@ -32,9 +32,9 @@ mixin updateFeatureForm(feature)
         .featureform__col.featureform__col2
             .featureform__col--grp
                 label(for="description") Description
-                textarea.feature__description(name="description" placeholder="Describe this feature..." data-feature=feature._id) #{feature.description}
+                textarea.feature__description(name="description" placeholder="Describe this feature..." data-feature=feature._id readonly=!h.isUserManager(user)) #{feature.description}
             .featureform__col--switch
                 label.label(for="blocked") Blocked
                 label.switch
-                    input.feature__blocked(name="blocked" type="checkbox" data-feature=feature._id checked= feature.blocked || false)
+                    input.feature__blocked(name="blocked" type="checkbox" data-feature=feature._id disabled=!h.isUserManager(user) checked= feature.blocked || false)
                     span.slider.round

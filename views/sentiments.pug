@@ -9,5 +9,6 @@ block content
         .listitems
             each sentiment in sentiments
                     +sentimentListItem(sentiment)
-        h3= 'Add New Sentiment'
-        +sentimentForm()
+        if h.isUserManager(user)
+            h3= 'Add New Sentiment'
+            +sentimentForm()

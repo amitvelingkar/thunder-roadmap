@@ -9,5 +9,6 @@ block content
         .listitems
             each growth in growths
                     +growthListItem(growth)
-        h3= 'Add New Growth Target'
-        +growthForm()
+        if h.isUserManager(user)
+            h3= 'Add New Growth Target'
+            +growthForm()

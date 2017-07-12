@@ -6,5 +6,5 @@ mixin ratingForm(feature,workflow,review)
                     - const starClass = (review &&  review.rating >= rating.value) ? 'star__button--starred' : '';
                     div(data-tooltip=rating.description)
                         input(type="hidden" name="workflow" value=workflow._id)
-                        button.star__button(type="submit" name="star" value=rating.value class=starClass)
+                        button.star__button(type="submit" name="star" value=rating.value disabled=!h.isUserManager(user) class=starClass)
                             != h.icon('heart')

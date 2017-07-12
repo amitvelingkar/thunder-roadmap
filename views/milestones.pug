@@ -9,5 +9,6 @@ block content
         .listitems
             each milestone in milestones
                     +milestoneListItem(milestone)
-        h3= 'Add New Milestone'
-        +milestoneForm()
+        if h.isUserManager(user)
+            h3= 'Add New Milestone'
+            +milestoneForm()

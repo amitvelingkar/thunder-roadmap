@@ -70,8 +70,19 @@ exports.getSentimentIcon = (sentiment) => {
   return moodIcon;
 };
 
+exports.isUserManager = (user) => {
+  return user && user.role && user.role < 20;
+};
+
 // Some details about the site
 exports.siteName = `Roadmap`;
+
+exports.role = {
+  'Admin': {level: 1},
+  'Manager': {level: 10},
+  'Member': {level: 20},
+  'Viewer': {level: 50}
+};
 
 exports.menu = [
   { slug: '/features', title: 'Features', icon: 'cake' },

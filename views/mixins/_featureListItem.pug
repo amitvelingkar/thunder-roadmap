@@ -2,7 +2,8 @@ mixin featureListItem(feature, workflows)
     .listitem
         .listitem__body
             .listitem__rank
-                input.feature__rank(type="number" name="stackrank" value=feature.stackrank data-feature=feature._id)
+                - const isreadonly = !h.isUserManager(user);
+                input.feature__rank(type="number" name="stackrank" value=feature.stackrank data-feature=feature._id readonly=isreadonly)
             div
                 .listitem__body--title
                     a(href=`/feature/${feature.slug}`) #{feature.name}
@@ -38,7 +39,8 @@ mixin featureListItem(feature, workflows)
                         = `＄`.repeat(feature.growth.order-1)
                     else
                         = "---"
-            .listitem__actions
-                .listitem__action.listitem__action--edit
-                    a(href=`/feature/${feature.slug}` data-tooltip='edit')
-                        != h.icon('edit')
+            if h.isUserManager(user)
+                .listitem__actions
+                    .listitem__action.listitem__action--edit
+                        a(href=`/feature/${feature.slug}` data-tooltip='edit')
+                            != h.icon('edit')

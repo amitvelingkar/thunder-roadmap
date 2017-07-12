@@ -21,6 +21,11 @@ const UserSchema = new Schema({
         trim: true,
         required: 'Please supply a name'
     },
+    role: {
+        type: Number,
+        Min: 1,
+        Max: 100
+    },
     resetPasswordToken: {
         type: String
     },

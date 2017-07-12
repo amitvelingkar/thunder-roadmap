@@ -5,6 +5,9 @@
     outline: 0;
     position: relative;
     width: 20px;
+    &[disabled] {
+      opacity: 0.5;
+    }
     &:after {
       content: '\2605';
       font-size: 20px;

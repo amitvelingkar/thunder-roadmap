@@ -13,6 +13,9 @@
             select {
                 width: 200px;
             }
+            textarea[readonly]{
+                background: #eee;
+            }
         }
         &--switch{
             display: flex;

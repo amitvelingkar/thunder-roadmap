@@ -63,6 +63,9 @@
   &__comment {
     margin-left: 3rem;
     width: 500px;
+    &[readonly] {
+      background: #eee;
+    }
   }
   &__row {
     display: flex;

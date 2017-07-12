@@ -1,3 +1,3 @@
 mixin commentForm(feature,workflow,review)
     - const comment = review ? review.comment : '';
-    textarea.review__comment(name="comment" placeholder="Leave a comment..." data-feature=feature._id data-workflow=workflow._id) #{comment}
+    textarea.review__comment(name="comment" placeholder="Leave a comment..." readonly=!h.isUserManager(user) data-feature=feature._id data-workflow=workflow._id) #{comment}

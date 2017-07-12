@@ -9,5 +9,6 @@ block content
         .listitems
             each workflow in workflows
                     +workflowListItem(workflow)
-        h3= 'Add New Workflow'
-        +workflowForm()
+        if h.isUserManager(user)
+            h3= 'Add New Workflow'
+            +workflowForm()

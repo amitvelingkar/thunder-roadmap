@@ -24,6 +24,10 @@
             font-family: 'Panama';
             font-weight: 600;
             letter-spacing: -1px;
+            input[readonly] {
+                background: none;
+                border: none;
+            }
         }
         &--subtitle {
             margin-top: -35px;

@@ -9,5 +9,6 @@ block content
         .listitems
             each cost in costs
                     +costListItem(cost)
-        h3= 'Add New T-Shirt Cost'
-        +costForm()
+        if h.isUserManager(user)
+            h3= 'Add New T-Shirt Cost'
+            +costForm()

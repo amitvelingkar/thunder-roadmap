@@ -13,5 +13,6 @@ block content
         .listitems
             each feature in features
                 +featureListItem(feature, workflows)
-        h3= 'Add New Feature'
-        +featureForm()
+        if h.isUserManager(user)
+            h3= 'Add New Feature'
+            +featureForm()
