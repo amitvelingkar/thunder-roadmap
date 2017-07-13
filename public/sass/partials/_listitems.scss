@@ -57,9 +57,17 @@
             border-radius: 0.25rem;
             text-transform: uppercase;
         }
+        .gray {
+            background-color: #757575;
+            color: #eee;
+        }
+        .blue {
+            background-color: #2196F3;
+            color: #eee;
+        }
         .purple {
-            background-color: purple;
-            color: #ccc;
+            background-color: #9C27B0;
+            color: #eee;
         }
         &--subtitle,
         &--text{

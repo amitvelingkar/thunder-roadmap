@@ -9,7 +9,7 @@ mixin featureListItem(feature, workflows)
                     - const dependencyClass = feature.dependency ? "dependency" : "";
                     a(href=`/feature/${feature.slug}` class=dependencyClass) #{feature.name}
                     if feature.dependency || false
-                        .listitem__content--label.purple
+                        .listitem__content--label.gray
                             div dependency
                     if feature.targetMilestone || false
                         .listitem__content--label.purple
