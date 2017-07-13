@@ -1,27 +1,28 @@
 mixin featureListItem(feature, workflows)
     .listitem
-        .listitem__body
+        .listitem__main
             .listitem__rank
                 - const isreadonly = !h.isUserManager(user);
                 input.feature__rank(type="number" name="stackrank" value=feature.stackrank data-feature=feature._id readonly=isreadonly)
-            div
-                .listitem__body--title
-                    a(href=`/feature/${feature.slug}`) #{feature.name}
+            .listitem__content
+                .listitem__content--title
+                    - const dependencyClass = feature.dependency ? "dependency" : "";
+                    a(href=`/feature/${feature.slug}` class=dependencyClass) #{feature.name}
                     if feature.dependency || false
-                        .listitem__body--label.purple
+                        .listitem__content--label.purple
                             div dependency
                     if feature.targetMilestone || false
-                        .listitem__body--label.purple
+                        .listitem__content--label.purple
                             div #{feature.targetMilestone.name}
-                .listitem__body--text
+                .listitem__content--text
                     div #{feature.description}
-                .listitem__body--chart
+                .listitem__content--chart
                     each workflow in workflows
                         - const review = feature.reviews ? feature.reviews.find(function(r) {return (workflow._id.equals(r.workflow)); }) : undefined;
                         - const stage = h.getStage(review); 
                         - const tooltip = h.reviewTooltip(workflow, review);
-                        a.listitem__body--cell(class=`color${stage}` href=`/feature/${feature.slug}` data-tooltip=tooltip)
-                            .listitem__body--stars
+                        a.listitem__content--cell(class=`color${stage}` href=`/feature/${feature.slug}` data-tooltip=tooltip)
+                            .listitem__content--stars
                                 - const maxStars = feature.targetMilestone ? (feature.targetMilestone.order - 1) : 6;
                                 if !review || !review.milestone
                                     = 'Not Reviewed'
@@ -30,30 +31,31 @@ mixin featureListItem(feature, workflows)
                                     = `☆`.repeat(maxStars-(review.milestone.order-1))
                                 else
                                     = 'N/A'
-        .listitem__meta
-            a(href=`/feature/${feature.slug}` data-tooltip=feature.cost ? feature.cost.description : 'Cost Not Set')
-                .listitem__meta--entry.listitem__meta--cost
-                    if !feature.cost
-                        = "---"
-                    else
-                        = feature.cost.shortName
-            - const sentimentClass = feature.sentiment ? `sentiment${feature.sentiment.order}` : '';
-            a(href=`/feature/${feature.slug}` data-tooltip=feature.sentiment ? feature.sentiment.name : 'Not Set')
-                .listitem__meta--entry.listitem__meta--sentiment(class=sentimentClass)
-                    if !feature.sentiment
-                        = "N/A"
-                    else
-                        != h.getSentimentIcon(feature.sentiment)
-            a(href=`/feature/${feature.slug}` data-tooltip=feature.growth ? feature.growth.name : 'Not Set')
-                .listitem__meta--entry.listitem__meta--growth
-                    if !feature.growth
-                        = "N/A"
-                    else if feature.growth.order > 1
-                        = `＄`.repeat(feature.growth.order-1)
-                    else
-                        = "---"
-            if h.isUserManager(user)
-                .listitem__actions
-                    .listitem__action.listitem__action--edit
-                        a(href=`/feature/${feature.slug}` data-tooltip='edit')
-                            != h.icon('edit')
+        .listitem__side
+            .listitem__info
+                a(href=`/feature/${feature.slug}` data-tooltip=feature.cost ? feature.cost.description : 'Cost Not Set')
+                    .listitem__info--entry.listitem__info--cost
+                        if !feature.cost
+                            = "---"
+                        else
+                            = feature.cost.shortName
+                - const sentimentClass = feature.sentiment ? `sentiment${feature.sentiment.order}` : '';
+                a(href=`/feature/${feature.slug}` data-tooltip=feature.sentiment ? feature.sentiment.name : 'Not Set')
+                    .listitem__info--entry.listitem__info--sentiment(class=sentimentClass)
+                        if !feature.sentiment
+                            = "N/A"
+                        else
+                            != h.getSentimentIcon(feature.sentiment)
+                a(href=`/feature/${feature.slug}` data-tooltip=feature.growth ? feature.growth.name : 'Not Set')
+                    .listitem__info--entry.listitem__info--growth
+                        if !feature.growth
+                            = "N/A"
+                        else if feature.growth.order > 1
+                            = `＄`.repeat(feature.growth.order-1)
+                        else
+                            = "---"
+                if h.isUserManager(user)
+                    .listitem__actions
+                        .listitem__action.listitem__action--edit
+                            a(href=`/feature/${feature.slug}` data-tooltip='edit')
+                                != h.icon('edit')

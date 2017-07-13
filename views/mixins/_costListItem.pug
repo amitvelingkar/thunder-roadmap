@@ -1,24 +1,25 @@
 mixin costListItem(cost = {})
     .listitem
-        .listitem__body
+        .listitem__main
             .listitem__order ##{cost.order}
-            div
-                .listitem__body--title
+            .listitem__content
+                .listitem__content--title
                     div #{cost.name}
-                    .listitem__body--label
+                    .listitem__content--label.purple
                         div #{cost.shortName}
-                .listitem__body--text
+                .listitem__content--text
                     div #{cost.description}
         if h.isUserManager(user)
-            .listitem__actions
-                .listitem__action.listitem__action--orderup
-                    form(method="POST" action=`/cost/${cost._id}/moveup`)
-                        button.listitem__action--button(type="submit" name="up")
-                            != h.icon('arrow_up')
-                .listitem__action.listitem__action--orderdown
-                    form(method="POST" action=`/cost/${cost._id}/movedown`)
-                        button.listitem__action--button(type="submit" name="down")
-                            != h.icon('arrow_down')
-                .listitem__action.listitem__action--edit
-                    a(href=`/costs/${cost._id}/edit`)
-                        != h.icon('edit')
+            .listitem__side
+                .listitem__actions
+                    .listitem__action.listitem__action--orderup
+                        form(method="POST" action=`/cost/${cost._id}/moveup`)
+                            button.listitem__action--button(type="submit" name="up")
+                                != h.icon('arrow_up')
+                    .listitem__action.listitem__action--orderdown
+                        form(method="POST" action=`/cost/${cost._id}/movedown`)
+                            button.listitem__action--button(type="submit" name="down")
+                                != h.icon('arrow_down')
+                    .listitem__action.listitem__action--edit
+                        a(href=`/costs/${cost._id}/edit`)
+                            != h.icon('edit')

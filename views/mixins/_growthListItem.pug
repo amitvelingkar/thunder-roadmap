@@ -1,22 +1,23 @@
 mixin growthListItem(growth = {})
     .listitem
-        .listitem__body
+        .listitem__main
             .listitem__order ##{growth.order}
-            div
-                .listitem__body--title
+            .listitem__content
+                .listitem__content--title
                     div #{growth.name}
-                .listitem__body--text
+                .listitem__content--text
                     div #{growth.description}
         if h.isUserManager(user)
-            .listitem__actions
-                .listitem__action.listitem__action--orderup
-                    form(method="POST" action=`/growth/${growth._id}/moveup`)
-                        button.listitem__action--button(type="submit" name="up")
-                            != h.icon('arrow_up')
-                .listitem__action.listitem__action--orderdown
-                    form(method="POST" action=`/growth/${growth._id}/movedown`)
-                        button.listitem__action--button(type="submit" name="down")
-                            != h.icon('arrow_down')
-                .listitem__action.listitem__action--edit
-                    a(href=`/growths/${growth._id}/edit`)
-                        != h.icon('edit')
+            .listitem__side
+                .listitem__actions
+                    .listitem__action.listitem__action--orderup
+                        form(method="POST" action=`/growth/${growth._id}/moveup`)
+                            button.listitem__action--button(type="submit" name="up")
+                                != h.icon('arrow_up')
+                    .listitem__action.listitem__action--orderdown
+                        form(method="POST" action=`/growth/${growth._id}/movedown`)
+                            button.listitem__action--button(type="submit" name="down")
+                                != h.icon('arrow_down')
+                    .listitem__action.listitem__action--edit
+                        a(href=`/growths/${growth._id}/edit`)
+                            != h.icon('edit')

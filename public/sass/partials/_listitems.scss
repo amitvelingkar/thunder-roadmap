@@ -6,7 +6,7 @@
     position: relative;
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 0.5rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -20,24 +20,32 @@
         position: absolute;
         height: 100%;
         background-attachment: fixed;
+        margin-top: -0.25rem;
+    }
+    &__main {
+        display: flex;
+        align-items: flex-start;
     }
     &__rank {
         margin-right: 10px;
         width: 70px;
-        height: 20px;
+        input {
+            width: 70px;
+        }
         input[readonly] {
             border: none;
         }
     }
-    &__body {
-        display: flex;
-        padding-top: 1rem;
+    &__content {
         padding-bottom: 0.5rem;
         &--title{
             white-space:pre-wrap;
             font-size: 2rem;
             line-height: 1;
             display: flex;
+            .dependency {
+                color: #999;
+            }
         }
         &--label {
             font-size: 1.25rem;
@@ -107,7 +115,7 @@
         color: #999;
         font-style: italic;
     }
-    &__meta {
+    &__info {
         display: flex;
         align-items: center;
         margin-left: 0.5rem;

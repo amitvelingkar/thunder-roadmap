@@ -1,22 +1,24 @@
 mixin workflowListItem(workflow = {})
     .listitem
-        .listitem__body
+        .listitem__main
             .listitem__order ##{workflow.order}
-            div
-                .listitem__body--title
-                    div #{workflow.name}
-                .listitem__body--text
-                    div #{workflow.description}
+            .listitem__content
+                div
+                    .listitem__content--title
+                        div #{workflow.name}
+                    .listitem__content--text
+                        div #{workflow.description}
         if h.isUserManager(user)
-            .listitem__actions
-                .listitem__action.listitem__action--orderup
-                    form(method="POST" action=`/workflow/${workflow._id}/moveup`)
-                        button.listitem__action--button(type="submit" name="up")
-                            != h.icon('arrow_up')
-                .listitem__action.listitem__action--orderdown
-                    form(method="POST" action=`/workflow/${workflow._id}/movedown`)
-                        button.listitem__action--button(type="submit" name="down")
-                            != h.icon('arrow_down')
-                .listitem__action.listitem__action--edit
-                    a(href=`/workflows/${workflow._id}/edit`)
-                        != h.icon('edit')
+            .listitem__side
+                .listitem__actions
+                    .listitem__action.listitem__action--orderup
+                        form(method="POST" action=`/workflow/${workflow._id}/moveup`)
+                            button.listitem__action--button(type="submit" name="up")
+                                != h.icon('arrow_up')
+                    .listitem__action.listitem__action--orderdown
+                        form(method="POST" action=`/workflow/${workflow._id}/movedown`)
+                            button.listitem__action--button(type="submit" name="down")
+                                != h.icon('arrow_down')
+                    .listitem__action.listitem__action--edit
+                        a(href=`/workflows/${workflow._id}/edit`)
+                            != h.icon('edit')

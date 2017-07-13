@@ -1,22 +1,23 @@
 mixin sentimentListItem(sentiment = {})
     .listitem
-        .listitem__body
+        .listitem__main
             .listitem__order ##{sentiment.order}
-            div
-                .listitem__body--title
+            .listitem__content
+                .listitem__content--title
                     div #{sentiment.name}
-                .listitem__body--text
+                .listitem__content--text
                     div #{sentiment.description}
         if h.isUserManager(user)
-            .listitem__actions
-                .listitem__action.listitem__action--orderup
-                    form(method="POST" action=`/sentiment/${sentiment._id}/moveup`)
-                        button.listitem__action--button(type="submit" name="up")
-                            != h.icon('arrow_up')
-                .listitem__action.listitem__action--orderdown
-                    form(method="POST" action=`/sentiment/${sentiment._id}/movedown`)
-                        button.listitem__action--button(type="submit" name="down")
-                            != h.icon('arrow_down')
-                .listitem__action.listitem__action--edit
-                    a(href=`/sentiments/${sentiment._id}/edit`)
-                        != h.icon('edit')
+            .listitem__side
+                .listitem__actions
+                    .listitem__action.listitem__action--orderup
+                        form(method="POST" action=`/sentiment/${sentiment._id}/moveup`)
+                            button.listitem__action--button(type="submit" name="up")
+                                != h.icon('arrow_up')
+                    .listitem__action.listitem__action--orderdown
+                        form(method="POST" action=`/sentiment/${sentiment._id}/movedown`)
+                            button.listitem__action--button(type="submit" name="down")
+                                != h.icon('arrow_down')
+                    .listitem__action.listitem__action--edit
+                        a(href=`/sentiments/${sentiment._id}/edit`)
+                            != h.icon('edit')
