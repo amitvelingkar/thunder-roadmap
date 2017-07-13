@@ -129,7 +129,7 @@
         margin-left: 0.5rem;
         &--entry {
             font-size: 1.5rem;
-            color: grey;
+            color: #333;
             margin-right: 1rem;
             width: 50px;
             border: 1px solid #ccc;
@@ -144,19 +144,9 @@
             align-items: center;
             justify-content: center;
         }
-        .sentiment1, .sentiment2{ 
+        &--sentiment {
             svg{
-                fill:#F44336;
-            }
-        }
-        .sentiment3 {
-            svg{
-                fill:grey;
-            }
-        }
-        .sentiment4, .sentiment5 {
-            svg{
-                fill:#4CAF50;
+                fill:#333;
             }
         }
     }

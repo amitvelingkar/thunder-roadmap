@@ -23,7 +23,6 @@ rankBoxes.on('keydown', ajaxRank);
 rankBoxes.on('blur', ajaxRank);
 
 const commentBoxes = $$('.review__comment');
-commentBoxes.on('keydown', ajaxComment);
 commentBoxes.on('blur', ajaxComment);
 
 const inputName = $$('.feature__name');
@@ -31,7 +30,6 @@ inputName.on('keydown', ajaxFeatureName);
 inputName.on('blur', ajaxFeatureName);
 
 const inputDesc = $$('.feature__description');
-inputDesc.on('keydown', ajaxFeatureDesc);
 inputDesc.on('blur', ajaxFeatureDesc);
 
 const milestoneSelector = $$('.review__milestone');
